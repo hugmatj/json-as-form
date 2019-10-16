@@ -1,7 +1,7 @@
 {
-  "name": "json-form",
+  "name": "json-as-form",
   "version": "0.0.2",
-  "description": "Edit JSON like a form, Smart JSON",
+  "description": "Edit JSON as a form",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
