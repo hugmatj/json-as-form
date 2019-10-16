@@ -1,0 +1,24 @@
+{
+  "name": "json-form",
+  "version": "0.0.1",
+  "description": "Edit JSON like a form, Smart JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/babel src --out-file index.js",
+    "release": "npm run build && npx release-it minor --ci"
+  },
+  "author": "Nishchit Dhanani",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "release-it": "^12.4.3"
+  }
+}
