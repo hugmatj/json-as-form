@@ -4,6 +4,7 @@
   "description": "Edit JSON as a form",
   "main": "index.js",
   "scripts": {
+    "prepare": "install-peers",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/babel src --out-file index.js",
     "release": "npm run build && npx release-it minor --ci"
@@ -17,8 +18,20 @@
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "@babel/preset-react": "^7.6.3",
-    "release-it": "^12.4.3"
+    "@babel/runtime": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "install-peers-cli": "^2.1.1",
+    "path": "^0.12.7",
+    "release-it": "^12.4.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "equal": "^0.1.1"
   }
 }
