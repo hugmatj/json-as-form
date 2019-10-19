@@ -8,29 +8,34 @@ const Row = ({
   fixedKeys = [],
   onChange,
   onToggleRowStatus,
-  onRemoveRow
+  onRemoveRow,
+  rowInterpolator
 }) => {
   let KeyQuote = _ => <span style={{ color: "#167af6", fontSize: 14 }}>"</span>;
   let ValueQuote = _ => (
     <span style={{ color: "#cd6a42", fontSize: 14 }}>"</span>
   );
 
-  let _onChangeValue = ({ target: { type, value, files } }, lastRow) => {
+  let _onChangeValue = ({ target: { type, value, files } }) => {
     try {
-      if (!meta || !meta.variableToType) {
-        return onChange(row.key, type == "file" ? files[0] : value);
-      }
+      // if (!meta || !meta.variableToType) {
+      //   return onChange(row.key, type == "file" ? files[0] : value);
+      // }
 
-      if (Object.keys(meta.variableToType).includes(row.key)) {
-        if (
-          meta.variableToType[row.key].ofType &&
-          meta.variableToType[row.key].ofType.serialize
-        ) {
-          let value = meta.variableToType[row.key].ofType.serialize(value);
+      // if (Object.keys(meta.variableToType).includes(row.key)) {
+      //   if (
+      //     meta.variableToType[row.key].ofType &&
+      //     meta.variableToType[row.key].ofType.serialize
+      //   ) {
+      //     let value = meta.variableToType[row.key].ofType.serialize(value);
 
-          onChange(row.key, value);
-        }
-      }
+      //     onChange(row.key, value);
+      //   }
+      // }
+
+      let changedRow = { ...row, value: type == "file" ? files[0] : value };
+      changedRow = rowInterpolator(changedRow);
+      onChange(changedRow.key, changedRow.value);
     } catch (error) {
       onChange(row.key, value);
     }

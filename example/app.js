@@ -33,6 +33,11 @@ const App = () => {
           console.log(v);
           setState(v);
         }}
+        rowInterpolator={row => {
+          console.log("row interpolator", row);
+          if (row.value == "Dhanani") row.value = "Firecamp";
+          return row;
+        }}
       />
     </div>
   );

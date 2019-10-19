@@ -9,7 +9,8 @@ const JSONForm = ({
   onChange,
   fixedKeys,
   autoAddRow = false,
-  debug = false
+  debug = false,
+  rowInterpolator = row => row
 }) => {
   const isInitialMount = useRef(true);
   let fromJSONObj = useRef(
@@ -19,8 +20,6 @@ const JSONForm = ({
 
   useEffect(
     () => {
-      console.log(json, "json value changed");
-
       fromJSONObj.current =
         typeof json == "object" && json.length ? false : true;
       // console.log(fromJSONObj.current, "fromJSONObj.current", json)
@@ -45,7 +44,7 @@ const JSONForm = ({
       if (isInitialMount.current) {
         isInitialMount.current = false;
       } else {
-        console.log("in parsed json callback");
+        // console.log("in parsed json callback");
         if (typeof onChange == "function") {
           let res = _fns._toJSON();
           if (!equal(res, json)) {
@@ -86,11 +85,11 @@ const JSONForm = ({
       }
     },
     _addNewRow: () => {
-      console.log(parsedJSON);
+      // console.log(parsedJSON);
       setParsedJSON([...parsedJSON, { key: "", value: "" }]);
     },
     _onChangeRow: (k, v, i, isLast) => {
-      console.log(k, v, i);
+      // console.log(k, v, i);
       let rows = parsedJSON.map((j, ii) => {
         let obj = { ...j };
         if (ii == i) {
@@ -100,11 +99,6 @@ const JSONForm = ({
         return obj;
       });
 
-      console.log(
-        json,
-        isLast,
-        isLast && autoAddRow == true ? [...rows, { key: "", value: "" }] : rows
-      );
       setParsedJSON(
         isLast && autoAddRow == true ? [...rows, { key: "", value: "" }] : rows
       );
@@ -149,6 +143,7 @@ const JSONForm = ({
             onToggleRowStatus={disable => _fns._onToggleRowStatus(disable, i)}
             onRemoveRow={() => _fns._onRemoveRow(i)}
             showCheckBox={!fromJSONObj.current}
+            rowInterpolator={rowInterpolator}
           />
         );
       })}
