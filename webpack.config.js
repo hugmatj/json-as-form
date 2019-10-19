@@ -19,8 +19,8 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
-    // 'react': 'react',
-    // 'react-dom' : 'reactDOM'
+    react: "react",
+    "react-dom": "reactDOM"
   },
   module: {
     rules: [
