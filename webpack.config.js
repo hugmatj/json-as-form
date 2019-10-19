@@ -9,11 +9,11 @@ module.exports = {
       path: path.resolve(__dirname, './'),
       filename: (chunkData) => {
 
-        console.log(chunkData.chunk.name)
+        // console.log(chunkData.chunk.name)
         return chunkData.chunk.name === 'index' ? 'dist/index.js': 'example/index.js';
       },
-      library: '',
-      libraryTarget: 'commonjs',
+      library: 'json-as-form',
+      libraryTarget: 'umd',
     },
     module: {
       rules: [
