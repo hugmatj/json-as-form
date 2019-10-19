@@ -2,7 +2,7 @@
   "name": "json-as-form",
   "version": "0.0.3",
   "description": "Edit JSON as a form",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "prepare": "install-peers",
     "test": "echo \"Error: no test specified\" && exit 1",
