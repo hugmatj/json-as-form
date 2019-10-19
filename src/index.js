@@ -6,10 +6,10 @@ import Row from "./Row";
 const JSONForm = ({
   json,
   meta,
-  onChange,
   fixedKeys,
   autoAddRow = false,
   debug = false,
+  onChange,
   rowInterpolator = row => row
 }) => {
   const isInitialMount = useRef(true);
