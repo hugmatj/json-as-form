@@ -5,6 +5,7 @@ module.exports = {
         index: path.resolve(__dirname, 'src/index.js'),
         app: path.resolve(__dirname, 'example/app.js')
     },
+    devtool: 'source-map',
     output: {
       path: path.resolve(__dirname, './'),
       filename: (chunkData) => {
@@ -14,16 +15,18 @@ module.exports = {
       },
       library: 'json-as-form',
       libraryTarget: 'umd',
+      umdNamedDefine: true
+    },
+    externals: {
+      'react': 'react',
+      'react-dom' : 'reactDOM'
     },
     module: {
       rules: [
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/react']
-          }
+          loader: 'babel-loader?cacheDirectory'
         },
         {
           test: /\.css$/,
