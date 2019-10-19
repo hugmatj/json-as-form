@@ -6,8 +6,8 @@
   "scripts": {
     "prepare": "install-peers",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/babel src --out-file index.js",
-    "release": "npm run build && npx release-it minor --ci"
+    "build": "webpack --prod",
+    "release": "yarn run build && npx release-it minor --ci"
   },
   "author": "Nishchit Dhanani",
   "license": "MIT",
