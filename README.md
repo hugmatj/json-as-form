@@ -1,18 +1,28 @@
 
+<div align="center">
+  <h1 align="center">
+      json-as-form
+  </h1>
+  
+  <p align="center">
+    <a href="https://travis-ci.org/pastelsky/bundlephobia">
+      <img src="https://img.shields.io/bundlephobia/minzip/json-as-form" />
+    </a>
+      <img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/firecampapp/json-as-form">
+      <img src="https://img.shields.io/npm/l/package-build-stats.svg" />
+  </p>
+  <p align="center">
+    Edit JSON like a Form <br />
+  </p>
+  <p align="center">
+    A multi-purpose JSON editing tool that lets to edit JSON object as an intuitive JSON-like Form.
+  </p>
 
+  <pre align="center">
+    npm i <a href="https://www.npmjs.com/package/json-s-form">json-as-form</a> / yarn add <a href="https://www.npmjs.com/package/json-s-form">json-as-form</a>
+  </pre>
 
-
-## json-as-form
-##### Edit JSON like a Form
-
-A multi-purpose JSON editing tool that lets to edit JSON object as an intuitive JSON-like Form.
-
-### install
-**yarn**
-`yarn add json-as-form`
-
-**npm**
-`npm install json-as-form --save`
+</div>
 
 **Usage**
 ```
