@@ -14,15 +14,12 @@ const JSONForm = ({
   rowInterpolator = row => row
 }) => {
   const isInitialMount = useRef(true);
-  let fromJSONObj = useRef(
-    typeof json == "object" && json.length ? false : true
-  );
+  let fromJSONObj = useRef(!Array.isArray(json));
   let [parsedJSON, setParsedJSON] = useState([]);
 
   useEffect(
     () => {
-      fromJSONObj.current =
-        typeof json == "object" && json.length ? false : true;
+      fromJSONObj.current = !Array.isArray(json);
       // console.log(fromJSONObj.current, "fromJSONObj.current", json)
 
       if (fromJSONObj.current == true) {
@@ -32,6 +29,9 @@ const JSONForm = ({
           setParsedJSON(newJSON);
         }
       } else {
+        if (autoAddRow && (!json || !json.length)) {
+          json = [{ key: "", value: "" }];
+        }
         if (!equal(json, _fns._toJSON())) {
           setParsedJSON([...json]);
         }
@@ -67,9 +67,14 @@ const JSONForm = ({
         };
       });
 
+      if (autoAddRow && (!rows || !rows.length)) {
+        rows = [{ key: "", value: "" }];
+      }
+
       let lastIndex = rows.length - 1;
       if (
-        autoAddRow == true &&
+        autoAddRow === true &&
+        rows[lastIndex] &&
         (rows[lastIndex].key || rows[lastIndex].value)
       ) {
         rows = [...rows, { key: "", value: "" }];
@@ -77,7 +82,7 @@ const JSONForm = ({
       return rows;
     },
     _toJSON: () => {
-      if (fromJSONObj.current == true) {
+      if (fromJSONObj.current === true) {
         return parsedJSON
           .filter(j => j.key)
           .reduce((p, n) => ({ ...p, [n.key]: n.value }), {});
@@ -93,7 +98,7 @@ const JSONForm = ({
       // console.log(k, v, i);
       let rows = parsedJSON.map((j, ii) => {
         let obj = { ...j };
-        if (ii == i) {
+        if (ii === i) {
           obj.key = k;
           obj.value = v;
         }
@@ -101,12 +106,12 @@ const JSONForm = ({
       });
 
       setParsedJSON(
-        isLast && autoAddRow == true ? [...rows, { key: "", value: "" }] : rows
+        isLast && autoAddRow === true ? [...rows, { key: "", value: "" }] : rows
       );
     },
     _onToggleRowStatus: (disblbe = false, i) => {
       let rows = parsedJSON.map((j, ii) => {
-        if (ii == i) {
+        if (ii === i) {
           j.disable = disblbe;
         }
         return j;
@@ -128,11 +133,15 @@ const JSONForm = ({
   let start = <span className={"start-brace"}>{"{"}</span>;
   let end = <span className={"end-brace"}>{"}"}</span>;
 
+  if (!parsedJSON.length) {
+    return <div className={`json-as-form ${className}`} />;
+  }
+
   return (
     <div className={`json-as-form ${className}`}>
       <div>{start}</div>
       {parsedJSON.map((d, i) => {
-        let isLastRow = parsedJSON.length == i + 1;
+        let isLastRow = parsedJSON.length === i + 1;
         return (
           <Row
             row={d}

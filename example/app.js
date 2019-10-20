@@ -4,7 +4,7 @@ import JSONForm from "../src/index";
 
 const App = () => {
   let JSONState = [
-    {
+    /*{
       key: "name",
       value: "Nishchit",
       type: "string"
@@ -18,13 +18,14 @@ const App = () => {
       key: "is available?",
       value: false,
       type: "boolean"
-    }
+    }*/
   ];
 
   let JSONObj = {
-    name: "Nishchit"
+    // name: "Nishchit"
   };
-  let [state, setState] = useState(JSONState);
+  let [state, setState] = useState(JSONObj);
+  let [jsonArr, setJsonArr] = useState(JSONState);
 
   return (
     <div>
@@ -33,10 +34,26 @@ const App = () => {
         json={state}
         fixedKeys={[]}
         debug={false}
-        autoAddRow={false}
+        autoAddRow={true}
         onChange={v => {
-          console.log(v);
+          // console.log(v);
           setState(v);
+        }}
+        rowInterpolator={row => {
+          console.log("row interpolator", row);
+          if (row.value == "Dhanani") row.value = "Firecamp";
+          return row;
+        }}
+      />
+
+      <JSONForm
+        json={jsonArr}
+        fixedKeys={[]}
+        debug={false}
+        autoAddRow={true}
+        onChange={v => {
+          // console.log(v);
+          setJsonArr(v);
         }}
         rowInterpolator={row => {
           console.log("row interpolator", row);

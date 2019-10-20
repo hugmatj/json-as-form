@@ -44,6 +44,7 @@
     border-bottom: 1px solid #cd6a42;
     font-size: 14px;
     color: #cd6a42;
+    max-width: 250px;
 }
 
 .json-as-form input.json_row--value {
@@ -53,12 +54,14 @@
     border-bottom: 1px solid #cd6a42;
     font-size: 14px;
     color: #cd6a42;
+    max-width: 250px;
 }
 
 .json-as-form span.json_row--value {
     border-bottom: 1px solid #cd6a42;
     font-size: 14px;
     color: #767676;
+    max-width: 250px;
 }
 
 .json-as-form div.json-row span.json_row--remove {
