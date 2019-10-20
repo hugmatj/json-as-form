@@ -19,7 +19,7 @@
   </p>
 
   <pre align="center">
-    npm i <a href="https://www.npmjs.com/package/json-s-form">json-as-form</a> / yarn add <a href="https://www.npmjs.com/package/json-s-form">json-as-form</a> </pre>
+    npm i <a href="https://www.npmjs.com/package/json-as-form">json-as-form</a> / yarn add <a href="https://www.npmjs.com/package/json-as-form">json-as-form</a> </pre>
 
 </div>
 
@@ -50,4 +50,4 @@ import JSONForm from "json-as-form";
 | rowInterpolator | no | row=> row | interpolate the row data before` onChange` callback|
 
 # LICENSE
-MIT @Firecamp 
+MIT [@Firecamp ](https://twitter.com/firecamphq)
