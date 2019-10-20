@@ -1,0 +1,70 @@
+.json-as-form {
+    margin-left: 10px;
+}
+.json-as-form .start-brace,
+.json-as-form .end-brace {
+    color: #2025bb;
+}
+
+.json-as-form .json-row {
+
+}
+
+.json-as-form input.json_row--checkbox {
+    margin-left: 10px;
+    cursor: pointer
+}
+
+.json-as-form .json_row--keyQuote {
+    color: #167af6;
+    font-size: 14px;
+}
+.json-as-form .json_row--valueQuote {
+    color: #cd6a42;
+    font-size: 14px;
+}
+
+.json-as-form .json_row--keyWrapper {
+    margin-left: 5px;
+}
+
+.json-as-form input.json_row--key {
+    outline: none;
+    min-width: 10px;
+    border: none;
+    border-bottom: 1px solid #167af6;
+    font-size: 14px;
+    color: #167af6;
+}
+
+.json-as-form select.json_row--value {
+    outline: none;
+    width: 60px;
+    border: none;
+    border-bottom: 1px solid #cd6a42;
+    font-size: 14px;
+    color: #cd6a42;
+}
+
+.json-as-form input.json_row--value {
+    outline: none;
+    min-width: 10px;
+    border: none;
+    border-bottom: 1px solid #cd6a42;
+    font-size: 14px;
+    color: #cd6a42;
+}
+
+.json-as-form span.json_row--value {
+    border-bottom: 1px solid #cd6a42;
+    font-size: 14px;
+    color: #767676;
+}
+
+.json-as-form div.json-row span.json_row--remove {
+    display: none;
+}
+
+.json-as-form div.json-row:hover span.json_row--remove {
+    display: inline;
+}

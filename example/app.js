@@ -13,6 +13,11 @@ const App = () => {
       key: "file",
       value: "",
       type: "file"
+    },
+    {
+      key: "is available?",
+      value: false,
+      type: "boolean"
     }
   ];
 

@@ -2,12 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import equal from "deep-equal";
 
 import Row from "./Row";
+import "./index.css";
 
 const JSONForm = ({
   json,
-  meta,
   fixedKeys,
   autoAddRow = false,
+  className = "",
   debug = false,
   onChange,
   rowInterpolator = row => row
@@ -124,11 +125,11 @@ const JSONForm = ({
     }
   };
 
-  let start = "{";
-  let end = "}";
+  let start = <span className={"start-brace"}>{"{"}</span>;
+  let end = <span className={"end-brace"}>{"}"}</span>;
 
   return (
-    <div style={{ marginLeft: 10 }}>
+    <div className={`json-as-form ${className}`}>
       <div>{start}</div>
       {parsedJSON.map((d, i) => {
         let isLastRow = parsedJSON.length == i + 1;
@@ -136,7 +137,6 @@ const JSONForm = ({
           <Row
             row={d}
             key={i}
-            meta={meta}
             isLast={isLastRow}
             fixedKeys={fixedKeys}
             onChange={(k, v) => _fns._onChangeRow(k, v, i, isLastRow)}

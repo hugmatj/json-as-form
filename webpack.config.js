@@ -1,4 +1,10 @@
 const path = require("path");
+const WEBPACK_DEV_SERVER = process.env.WEBPACK_DEV_SERVER;
+
+let externals = {
+  react: "react",
+  "react-dom": "reactDOM"
+};
 
 module.exports = {
   entry: {
@@ -18,10 +24,7 @@ module.exports = {
     libraryTarget: "umd",
     umdNamedDefine: true
   },
-  externals: {
-    react: "react",
-    "react-dom": "reactDOM"
-  },
+  externals: WEBPACK_DEV_SERVER ? {} : externals,
   module: {
     rules: [
       {

@@ -11,10 +11,8 @@ const Row = ({
   onRemoveRow,
   rowInterpolator
 }) => {
-  let KeyQuote = _ => <span style={{ color: "#167af6", fontSize: 14 }}>"</span>;
-  let ValueQuote = _ => (
-    <span style={{ color: "#cd6a42", fontSize: 14 }}>"</span>
-  );
+  let KeyQuote = _ => <span className={"json_row--keyQuote"}>"</span>;
+  let ValueQuote = _ => <span className={"json_row--valueQuote"}>"</span>;
 
   let _onChangeValue = ({ target: { type, value, files } }) => {
     try {
@@ -33,6 +31,8 @@ const Row = ({
       //   }
       // }
 
+      if (value == "true") value = true;
+      if (value == "false") value = false;
       let changedRow = { ...row, value: type == "file" ? files[0] : value };
       changedRow = rowInterpolator(changedRow);
       onChange(changedRow.key, changedRow.value);
@@ -54,14 +54,9 @@ const Row = ({
     if (row.type == "boolean") {
       return (
         <select
-          style={{
-            outline: "none",
-            width: "60px",
-            border: "none",
-            borderBottom: "1px solid #cd6a42",
-            fontSize: 14,
-            color: "#cd6a42"
-          }}
+          className={"json_row--value"}
+          value={!!row.value}
+          onChange={_onChangeValue}
         >
           <option value={true}>True</option>
           <option value={false}>False</option>
@@ -69,17 +64,7 @@ const Row = ({
       );
     } else if (row.type == "file") {
       if (row.value && row.value.name) {
-        return (
-          <span
-            style={{
-              borderBottom: "1px solid #cd6a42",
-              fontSize: 14,
-              color: "#767676"
-            }}
-          >
-            {row.value.name}
-          </span>
-        );
+        return <span className={"json_row--value"}>{row.value.name}</span>;
       } else {
         return (
           <input
@@ -88,6 +73,7 @@ const Row = ({
             onClick={event => {
               event.target.value = null;
             }}
+            className={"json_row--value"}
             style={{
               outline: "none",
               margin: "5px auto",
@@ -107,14 +93,9 @@ const Row = ({
           type={row.key.includes("password") ? "password" : "text"}
           value={row.value || ""}
           onChange={e => _onChangeValue(e, isLast)}
+          className={"json_row--value"}
           style={{
-            outline: "none",
-            width: `${row.value ? row.value.length * 8 + 5 : 20}px`,
-            minWidth: "10px",
-            border: "none",
-            borderBottom: "1px solid #cd6a42",
-            fontSize: 14,
-            color: "#cd6a42"
+            width: `${row.value ? row.value.length * 8 + 5 : 20}px`
           }}
           key="input"
         />,
@@ -124,17 +105,17 @@ const Row = ({
   };
 
   return (
-    <div>
+    <div className={"json-row"}>
       {showCheckBox && (
         <input
           type="checkbox"
           checked={!row.disable}
           onChange={() => onToggleRowStatus(!row.disable)}
-          style={{ marginLeft: 10, cursor: "pointer" }}
+          className={"json_row--checkbox"}
         />
       )}
 
-      <span style={{ marginLeft: 5, color: "#167af6" }}>
+      <span className={"json_row--keyWrapper"}>
         <KeyQuote />
         {/*{row.key}*/}
         {fixedKeys.includes("key") ? (
@@ -145,14 +126,9 @@ const Row = ({
             value={row.key}
             onChange={e => _onChangeKey(e.target.value)}
             style={{
-              outline: "none",
-              width: `${row.key.length ? row.key.length * 8 + 2 : 20}px`,
-              minWidth: "10px",
-              border: "none",
-              borderBottom: "1px solid #167af6",
-              fontSize: 14,
-              color: "#167af6"
+              width: `${row.key.length ? row.key.length * 8 + 2 : 20}px`
             }}
+            className={"json_row--key"}
           />
         )}
         <KeyQuote />:
@@ -161,10 +137,10 @@ const Row = ({
 
       <span
         onClick={onRemoveRow}
+        className={"json_row--remove"}
         style={{ marginLeft: 10, color: "red", cursor: "pointer" }}
       >
         &times;
-        {/*<button aria-label="Close Account Info Modal Box">&#10006;</button>*/}
       </span>
     </div>
   );
