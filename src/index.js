@@ -7,6 +7,7 @@ import "./index.css";
 const JSONForm = ({
   json,
   fixedKeys,
+  detach = false,
   autoAddRow = false,
   className = "",
   debug = false,
@@ -19,6 +20,10 @@ const JSONForm = ({
 
   useEffect(
     () => {
+      if (isInitialMount.current === false && detach === true) {
+        return;
+      }
+
       fromJSONObj.current = !Array.isArray(json);
       // console.log(fromJSONObj.current, "fromJSONObj.current", json)
 

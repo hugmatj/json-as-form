@@ -548,48 +548,51 @@
       t.default = function(e) {
         var t = e.json,
           n = e.fixedKeys,
-          r = e.autoAddRow,
+          r = e.detach,
           a = void 0 !== r && r,
-          i = e.className,
-          l = void 0 === i ? "" : i,
-          y = e.debug,
-          m = void 0 !== y && y,
-          v = e.onChange,
-          h = e.rowInterpolator,
-          j =
-            void 0 === h
+          i = e.autoAddRow,
+          l = void 0 !== i && i,
+          y = e.className,
+          m = void 0 === y ? "" : y,
+          v = e.debug,
+          h = void 0 !== v && v,
+          j = e.onChange,
+          w = e.rowInterpolator,
+          O =
+            void 0 === w
               ? function(e) {
                   return e;
                 }
-              : h,
-          w = Object(f.useRef)(!0),
-          O = Object(f.useRef)(!Array.isArray(t)),
-          x = Object(f.useState)([]),
-          S = s()(x, 2),
-          E = S[0],
-          k = S[1];
+              : w,
+          x = Object(f.useRef)(!0),
+          S = Object(f.useRef)(!Array.isArray(t)),
+          E = Object(f.useState)([]),
+          k = s()(E, 2),
+          _ = k[0],
+          P = k[1];
         Object(f.useEffect)(
           function() {
-            if (((O.current = !Array.isArray(t)), 1 == O.current)) {
-              var e = _._parseJSON(g({}, t));
-              b()(e, E) || k(e);
-            } else
-              !a || (t && t.length) || (t = [{ key: "", value: "" }]),
-                b()(t, _._toJSON()) || k(c()(t));
+            if (!1 !== x.current || !0 !== a)
+              if (((S.current = !Array.isArray(t)), 1 == S.current)) {
+                var e = N._parseJSON(g({}, t));
+                b()(e, _) || P(e);
+              } else
+                !l || (t && t.length) || (t = [{ key: "", value: "" }]),
+                  b()(t, N._toJSON()) || P(c()(t));
           },
           [t]
         ),
           Object(f.useEffect)(
             function() {
-              if (w.current) w.current = !1;
-              else if ("function" == typeof v) {
-                var e = _._toJSON();
-                b()(e, t) || v(e);
+              if (x.current) x.current = !1;
+              else if ("function" == typeof j) {
+                var e = N._toJSON();
+                b()(e, t) || j(e);
               }
             },
-            [E]
+            [_]
           );
-        var _ = {
+        var N = {
             _parseJSON: function() {
               var e =
                   arguments.length > 0 && void 0 !== arguments[0]
@@ -598,10 +601,10 @@
                 t = Object.keys(e).map(function(t, n) {
                   return { key: t, value: e[t], type: e.type || o()(e[t]) };
                 });
-              !a || (t && t.length) || (t = [{ key: "", value: "" }]);
+              !l || (t && t.length) || (t = [{ key: "", value: "" }]);
               var n = t.length - 1;
               return (
-                !0 === a &&
+                !0 === l &&
                   t[n] &&
                   (t[n].key || t[n].value) &&
                   (t = [].concat(c()(t), [{ key: "", value: "" }])),
@@ -609,26 +612,26 @@
               );
             },
             _toJSON: function() {
-              return !0 === O.current
-                ? E.filter(function(e) {
+              return !0 === S.current
+                ? _.filter(function(e) {
                     return e.key;
                   }).reduce(function(e, t) {
                     return g({}, e, u()({}, t.key, t.value));
                   }, {})
-                : E.filter(function(e) {
+                : _.filter(function(e) {
                     return e.key;
                   });
             },
             _addNewRow: function() {
-              k([].concat(c()(E), [{ key: "", value: "" }]));
+              P([].concat(c()(_), [{ key: "", value: "" }]));
             },
             _onChangeRow: function(e, t, n, r) {
-              var o = E.map(function(r, o) {
+              var o = _.map(function(r, o) {
                 var a = g({}, r);
                 return o === n && ((a.key = e), (a.value = t)), a;
               });
-              k(
-                r && !0 === a ? [].concat(c()(o), [{ key: "", value: "" }]) : o
+              P(
+                r && !0 === l ? [].concat(c()(o), [{ key: "", value: "" }]) : o
               );
             },
             _onToggleRowStatus: function() {
@@ -637,55 +640,55 @@
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0,
-                n = E.map(function(n, r) {
+                n = _.map(function(n, r) {
                   return r === t && (n.disable = e), n;
                 });
-              k(n);
+              P(n);
             },
             _onRemoveRow: function(e) {
-              var t = E.filter(function(t, n) {
+              var t = _.filter(function(t, n) {
                 return n !== e;
               });
-              t.length ? k(t) : k([{ key: "", value: "" }]);
+              t.length ? P(t) : P([{ key: "", value: "" }]);
             }
           },
-          P = p.a.createElement("span", { className: "start-brace" }, "{"),
-          N = p.a.createElement("span", { className: "end-brace" }, "}");
-        return E.length
+          R = p.a.createElement("span", { className: "start-brace" }, "{"),
+          C = p.a.createElement("span", { className: "end-brace" }, "}");
+        return _.length
           ? p.a.createElement(
               "div",
-              { className: "json-as-form ".concat(l) },
-              p.a.createElement("div", null, P),
-              E.map(function(e, t) {
-                var r = E.length === t + 1;
+              { className: "json-as-form ".concat(m) },
+              p.a.createElement("div", null, R),
+              _.map(function(e, t) {
+                var r = _.length === t + 1;
                 return p.a.createElement(d, {
                   row: e,
                   key: t,
                   isLast: r,
                   fixedKeys: n,
                   onChange: function(e, n) {
-                    return _._onChangeRow(e, n, t, r);
+                    return N._onChangeRow(e, n, t, r);
                   },
                   onToggleRowStatus: function(e) {
-                    return _._onToggleRowStatus(e, t);
+                    return N._onToggleRowStatus(e, t);
                   },
                   onRemoveRow: function() {
-                    return _._onRemoveRow(t);
+                    return N._onRemoveRow(t);
                   },
-                  showCheckBox: !O.current,
-                  rowInterpolator: j
+                  showCheckBox: !S.current,
+                  rowInterpolator: O
                 });
               }),
-              p.a.createElement("div", null, N),
-              m &&
+              p.a.createElement("div", null, C),
+              h &&
                 p.a.createElement(
                   "div",
                   null,
-                  p.a.createElement("pre", null, JSON.stringify(E, 2, 2)),
+                  p.a.createElement("pre", null, JSON.stringify(_, 2, 2)),
                   p.a.createElement("pre", null, JSON.stringify(t, 2, 2))
                 )
             )
-          : p.a.createElement("div", { className: "json-as-form ".concat(l) });
+          : p.a.createElement("div", { className: "json-as-form ".concat(m) });
       };
     },
     function(e, t) {
