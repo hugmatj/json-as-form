@@ -10,6 +10,9 @@
     </a>
       <img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/firecampapp/json-as-form">
       <img src="https://img.shields.io/npm/l/package-build-stats.svg" />
+  <a href="https://twitter.com/firecamphq" target="_blank">
+      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/FirecampHQ?label=follow%20%40Firecamp">
+  </a>
   </p>
   <p align="center">
     Edit JSON like a Form <br />
