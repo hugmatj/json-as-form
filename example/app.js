@@ -4,9 +4,9 @@ import JSONForm from "../src/index";
 
 const App = () => {
   let JSONState = [
-    /*{
+    {
       key: "name",
-      value: "Nishchit",
+      value: "json-as-form",
       type: "string"
     },
     {
@@ -15,10 +15,10 @@ const App = () => {
       type: "file"
     },
     {
-      key: "is available?",
+      key: "is OSS?",
       value: false,
       type: "boolean"
-    }*/
+    }
   ];
 
   let JSONObj = {
@@ -35,6 +35,7 @@ const App = () => {
         fixedKeys={[]}
         debug={false}
         autoAddRow={true}
+        detach={true}
         onChange={v => {
           // console.log(v);
           setState(v);
@@ -61,6 +62,8 @@ const App = () => {
           return row;
         }}
       />
+
+      <pre>{JSON.stringify(jsonArr, 4, 4)}</pre>
     </div>
   );
 };

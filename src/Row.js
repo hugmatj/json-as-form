@@ -73,14 +73,7 @@ const Row = ({
             onClick={event => {
               event.target.value = null;
             }}
-            className={"json_row--value"}
-            style={{
-              outline: "none",
-              margin: "5px auto",
-              width: `80px`,
-              minWidth: "10px",
-              border: "none"
-            }}
+            className={"json_row--file"}
           />
         );
       }

@@ -60,7 +60,7 @@
         return Object.prototype.hasOwnProperty.call(e, t);
       }),
       (n.p = ""),
-      n((n.s = 33))
+      n((n.s = 38))
     );
   })([
     function(t, n) {
@@ -82,9 +82,9 @@
       };
     },
     function(e, t, n) {
-      var r = n(12),
-        o = n(13),
-        a = n(14);
+      var r = n(15),
+        o = n(16),
+        a = n(17);
       e.exports = function(e) {
         return r(e) || o(e) || a();
       };
@@ -125,12 +125,12 @@
       e.exports = r;
     },
     function(e, t, n) {
-      var r = n(7),
-        o = n(19),
-        a = n(20),
-        c = n(21),
-        i = n(25),
-        u = n(27),
+      var r = n(8),
+        o = n(22),
+        a = n(23),
+        i = n(24),
+        c = n(28),
+        u = n(30),
         l = Date.prototype.getTime;
       function s(e, t, n) {
         var y = n || {};
@@ -146,15 +146,15 @@
                 if (f(e) || f(t)) return !1;
                 if (e.prototype !== t.prototype) return !1;
                 if (o(e) !== o(t)) return !1;
-                var b = c(e),
-                  m = c(t);
-                if (b !== m) return !1;
-                if (b || m) return e.source === t.source && i(e) === i(t);
+                var v = i(e),
+                  d = i(t);
+                if (v !== d) return !1;
+                if (v || d) return e.source === t.source && c(e) === c(t);
                 if (u(e) && u(t)) return l.call(e) === l.call(t);
-                var d = p(e),
-                  v = p(t);
-                if (d !== v) return !1;
-                if (d || v) {
+                var m = p(e),
+                  b = p(t);
+                if (m !== b) return !1;
+                if (m || b) {
                   if (e.length !== t.length) return !1;
                   for (a = 0; a < e.length; a++) if (e[a] !== t[a]) return !1;
                   return !0;
@@ -189,26 +189,26 @@
       e.exports = s;
     },
     function(e, t, n) {
-      var r = n(15),
-        o = n(16),
-        a = n(17);
+      var r = n(18),
+        o = n(19),
+        a = n(20);
       e.exports = function(e, t) {
         return r(e) || o(e, t) || a();
       };
     },
     function(e, t, n) {
       "use strict";
-      var r = n(7),
+      var r = n(8),
         o = "function" == typeof Symbol && "symbol" == typeof Symbol("foo"),
         a = Object.prototype.toString,
-        c = Array.prototype.concat,
-        i = Object.defineProperty,
+        i = Array.prototype.concat,
+        c = Object.defineProperty,
         u =
-          i &&
+          c &&
           (function() {
             var e = {};
             try {
-              for (var t in (i(e, "x", { enumerable: !1, value: e }), e))
+              for (var t in (c(e, "x", { enumerable: !1, value: e }), e))
                 return !1;
               return e.x === e;
             } catch (e) {
@@ -222,7 +222,7 @@
               "[object Function]" !== a.call(o) ||
               !r())) ||
             (u
-              ? i(e, t, {
+              ? c(e, t, {
                   configurable: !0,
                   enumerable: !1,
                   value: n,
@@ -233,35 +233,41 @@
         s = function(e, t) {
           var n = arguments.length > 2 ? arguments[2] : {},
             a = r(t);
-          o && (a = c.call(a, Object.getOwnPropertySymbols(t)));
-          for (var i = 0; i < a.length; i += 1) l(e, a[i], t[a[i]], n[a[i]]);
+          o && (a = i.call(a, Object.getOwnPropertySymbols(t)));
+          for (var c = 0; c < a.length; c += 1) l(e, a[c], t[a[c]], n[a[c]]);
         };
       (s.supportsDescriptors = !!u), (e.exports = s);
     },
     function(e, t, n) {
+      var r = n(31),
+        o = n(32),
+        a = o;
+      (a.v1 = r), (a.v4 = o), (e.exports = a);
+    },
+    function(e, t, n) {
       "use strict";
       var r = Array.prototype.slice,
-        o = n(8),
+        o = n(9),
         a = Object.keys,
-        c = a
+        i = a
           ? function(e) {
               return a(e);
             }
-          : n(18),
-        i = Object.keys;
-      (c.shim = function() {
+          : n(21),
+        c = Object.keys;
+      (i.shim = function() {
         Object.keys
           ? (function() {
               var e = Object.keys(arguments);
               return e && e.length === arguments.length;
             })(1, 2) ||
             (Object.keys = function(e) {
-              return o(e) ? i(r.call(e)) : i(e);
+              return o(e) ? c(r.call(e)) : c(e);
             })
-          : (Object.keys = c);
-        return Object.keys || c;
+          : (Object.keys = i);
+        return Object.keys || i;
       }),
-        (e.exports = c);
+        (e.exports = i);
     },
     function(e, t, n) {
       "use strict";
@@ -303,13 +309,13 @@
     },
     function(e, t, n) {
       "use strict";
-      var r = n(9),
+      var r = n(10),
         o = n(6).supportsDescriptors,
         a = Object.getOwnPropertyDescriptor,
-        c = TypeError;
+        i = TypeError;
       e.exports = function() {
         if (!o)
-          throw new c(
+          throw new i(
             "RegExp.prototype.flags requires a true ES5 environment that supports property descriptors"
           );
         if ("gim" === /a/gim.flags) {
@@ -320,22 +326,77 @@
         return r;
       };
     },
+    function(e, t) {
+      var n =
+        ("undefined" != typeof crypto &&
+          crypto.getRandomValues &&
+          crypto.getRandomValues.bind(crypto)) ||
+        ("undefined" != typeof msCrypto &&
+          "function" == typeof window.msCrypto.getRandomValues &&
+          msCrypto.getRandomValues.bind(msCrypto));
+      if (n) {
+        var r = new Uint8Array(16);
+        e.exports = function() {
+          return n(r), r;
+        };
+      } else {
+        var o = new Array(16);
+        e.exports = function() {
+          for (var e, t = 0; t < 16; t++)
+            0 == (3 & t) && (e = 4294967296 * Math.random()),
+              (o[t] = (e >>> ((3 & t) << 3)) & 255);
+          return o;
+        };
+      }
+    },
+    function(e, t) {
+      for (var n = [], r = 0; r < 256; ++r)
+        n[r] = (r + 256).toString(16).substr(1);
+      e.exports = function(e, t) {
+        var r = t || 0,
+          o = n;
+        return [
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]],
+          "-",
+          o[e[r++]],
+          o[e[r++]],
+          "-",
+          o[e[r++]],
+          o[e[r++]],
+          "-",
+          o[e[r++]],
+          o[e[r++]],
+          "-",
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]],
+          o[e[r++]]
+        ].join("");
+      };
+    },
     function(e, t, n) {
       "use strict";
       n.r(t);
       var r = n(3),
         o = n.n(r),
         a = n(2),
-        c = n.n(a),
-        i = n(1),
-        u = n.n(i),
+        i = n.n(a),
+        c = n(1),
+        u = n.n(c),
         l = n(5),
         s = n.n(l),
         f = n(0),
         p = n.n(f),
         y = n(4),
-        b = n.n(y);
-      function m(e, t) {
+        v = n.n(y),
+        d = n(7),
+        m = n.n(d);
+      function b(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
           var r = Object.getOwnPropertySymbols(e);
@@ -347,13 +408,13 @@
         }
         return n;
       }
-      var d = function(e) {
+      var g = function(e) {
         var t = e.row,
           n = (e.isLast, e.meta, e.showCheckBox),
           r = e.fixedKeys,
           a = void 0 === r ? [] : r,
-          c = e.onChange,
-          i = e.onToggleRowStatus,
+          i = e.onChange,
+          c = e.onToggleRowStatus,
           l = e.onRemoveRow,
           s = e.rowInterpolator,
           f = function(e) {
@@ -370,18 +431,18 @@
               '"'
             );
           },
-          b = function(e) {
+          v = function(e) {
             var n = e.target,
               r = n.type,
               o = n.value,
               a = n.files;
             try {
               "true" == o && (o = !0), "false" == o && (o = !1);
-              var i = (function(e) {
+              var c = (function(e) {
                 for (var t = 1; t < arguments.length; t++) {
                   var n = null != arguments[t] ? arguments[t] : {};
                   t % 2
-                    ? m(n, !0).forEach(function(t) {
+                    ? b(n, !0).forEach(function(t) {
                         u()(e, t, n[t]);
                       })
                     : Object.getOwnPropertyDescriptors
@@ -389,7 +450,7 @@
                           e,
                           Object.getOwnPropertyDescriptors(n)
                         )
-                      : m(n).forEach(function(t) {
+                      : b(n).forEach(function(t) {
                           Object.defineProperty(
                             e,
                             t,
@@ -399,13 +460,13 @@
                 }
                 return e;
               })({}, t, { value: "file" == r ? a[0] : o });
-              (i = s(i)), c(i.key, i.value);
+              (c = s(c)), i(c.key, c.value);
             } catch (e) {
-              c(t.key, o);
+              i(t.key, o);
             }
           },
           d = function(e) {
-            c(e, t.value);
+            i(e, t.value);
           };
         return p.a.createElement(
           "div",
@@ -415,7 +476,7 @@
               type: "checkbox",
               checked: !t.disable,
               onChange: function() {
-                return i(!t.disable);
+                return c(!t.disable);
               },
               className: "json_row--checkbox"
             }),
@@ -451,7 +512,7 @@
                   {
                     className: "json_row--value",
                     value: !!t.value,
-                    onChange: b
+                    onChange: v
                   },
                   p.a.createElement("option", { value: !0 }, "True"),
                   p.a.createElement("option", { value: !1 }, "False")
@@ -466,19 +527,12 @@
                   : p.a.createElement("input", {
                       type: "file",
                       onChange: function(e) {
-                        return b(e);
+                        return v(e);
                       },
                       onClick: function(e) {
                         e.target.value = null;
                       },
-                      className: "json_row--value",
-                      style: {
-                        outline: "none",
-                        margin: "5px auto",
-                        width: "80px",
-                        minWidth: "10px",
-                        border: "none"
-                      }
+                      className: "json_row--file"
                     })
                 : null !== t.value && "object" == o()(t.value)
                   ? p.a.createElement("span", null, " ", "{...}", " ")
@@ -488,7 +542,7 @@
                         type: t.key.includes("password") ? "password" : "text",
                         value: t.value || "",
                         onChange: function(e) {
-                          return b(e);
+                          return v(e);
                         },
                         className: "json_row--value",
                         style: {
@@ -513,8 +567,8 @@
           )
         );
       };
-      n(28);
-      function v(e, t) {
+      n(33);
+      function h(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
           var r = Object.getOwnPropertySymbols(e);
@@ -526,16 +580,16 @@
         }
         return n;
       }
-      function g(e) {
+      function j(e) {
         for (var t = 1; t < arguments.length; t++) {
           var n = null != arguments[t] ? arguments[t] : {};
           t % 2
-            ? v(n, !0).forEach(function(t) {
+            ? h(n, !0).forEach(function(t) {
                 u()(e, t, n[t]);
               })
             : Object.getOwnPropertyDescriptors
               ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-              : v(n).forEach(function(t) {
+              : h(n).forEach(function(t) {
                   Object.defineProperty(
                     e,
                     t,
@@ -550,49 +604,55 @@
           n = e.fixedKeys,
           r = e.detach,
           a = void 0 !== r && r,
-          i = e.autoAddRow,
-          l = void 0 !== i && i,
+          c = e.autoAddRow,
+          l = void 0 !== c && c,
           y = e.className,
-          m = void 0 === y ? "" : y,
-          v = e.debug,
-          h = void 0 !== v && v,
-          j = e.onChange,
-          w = e.rowInterpolator,
-          O =
-            void 0 === w
+          d = void 0 === y ? "" : y,
+          b = e.rowIdKey,
+          h = void 0 === b ? "uuid" : b,
+          w = e.debug,
+          x = void 0 !== w && w,
+          O = e.onChange,
+          S = e.rowInterpolator,
+          E =
+            void 0 === S
               ? function(e) {
                   return e;
                 }
-              : w,
-          x = Object(f.useRef)(!0),
-          S = Object(f.useRef)(!Array.isArray(t)),
-          E = Object(f.useState)([]),
-          k = s()(E, 2),
-          _ = k[0],
-          P = k[1];
+              : S,
+          k = Object(f.useRef)(!0),
+          _ = Object(f.useRef)(!Array.isArray(t)),
+          R = Object(f.useState)([]),
+          C = s()(R, 2),
+          P = C[0],
+          N = C[1];
         Object(f.useEffect)(
           function() {
-            if (!1 !== x.current || !0 !== a)
-              if (((S.current = !Array.isArray(t)), 1 == S.current)) {
-                var e = N._parseJSON(g({}, t));
-                b()(e, _) || P(e);
+            if (!1 !== k.current || !0 !== a)
+              if (((_.current = !Array.isArray(t)), 1 == _.current)) {
+                var e = A._parseJSON(j({}, t));
+                v()(e, P) || N(e);
               } else
                 !l || (t && t.length) || (t = [{ key: "", value: "" }]),
-                  b()(t, N._toJSON()) || P(c()(t));
+                  v()(t, A._toJSON()) ||
+                    ((t = t.map(function(e) {
+                      return e[h] || (e[h] = m.a.v4()), e;
+                    })),
+                    N(i()(t)));
           },
           [t]
         ),
           Object(f.useEffect)(
             function() {
-              if (x.current) x.current = !1;
-              else if ("function" == typeof j) {
-                var e = N._toJSON();
-                b()(e, t) || j(e);
+              if (k.current) k.current = !1;
+              else if ("function" == typeof O) {
+                var e = A._toJSON();
+                v()(e, t) || O(e);
               }
             },
-            [_]
+            [P]
           );
-        var N = {
+        var A = {
             _parseJSON: function() {
               var e =
                   arguments.length > 0 && void 0 !== arguments[0]
@@ -607,31 +667,40 @@
                 !0 === l &&
                   t[n] &&
                   (t[n].key || t[n].value) &&
-                  (t = [].concat(c()(t), [{ key: "", value: "" }])),
+                  (t = [].concat(i()(t), [{ key: "", value: "" }])),
                 t
               );
             },
             _toJSON: function() {
-              return !0 === S.current
-                ? _.filter(function(e) {
+              return !0 === _.current
+                ? P.filter(function(e) {
                     return e.key;
                   }).reduce(function(e, t) {
-                    return g({}, e, u()({}, t.key, t.value));
+                    return j({}, e, u()({}, t.key, t.value));
                   }, {})
-                : _.filter(function(e) {
+                : P.filter(function(e) {
                     return e.key;
                   });
             },
             _addNewRow: function() {
-              P([].concat(c()(_), [{ key: "", value: "" }]));
+              var e;
+              N(
+                [].concat(i()(P), [
+                  ((e = {}),
+                  u()(e, h, m.a.v4()),
+                  u()(e, "key", ""),
+                  u()(e, "value", ""),
+                  e)
+                ])
+              );
             },
             _onChangeRow: function(e, t, n, r) {
-              var o = _.map(function(r, o) {
-                var a = g({}, r);
+              var o = P.map(function(r, o) {
+                var a = j({}, r);
                 return o === n && ((a.key = e), (a.value = t)), a;
               });
-              P(
-                r && !0 === l ? [].concat(c()(o), [{ key: "", value: "" }]) : o
+              N(
+                r && !0 === l ? [].concat(i()(o), [{ key: "", value: "" }]) : o
               );
             },
             _onToggleRowStatus: function() {
@@ -640,55 +709,55 @@
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0,
-                n = _.map(function(n, r) {
+                n = P.map(function(n, r) {
                   return r === t && (n.disable = e), n;
                 });
-              P(n);
+              N(n);
             },
             _onRemoveRow: function(e) {
-              var t = _.filter(function(t, n) {
+              var t = P.filter(function(t, n) {
                 return n !== e;
               });
-              t.length ? P(t) : P([{ key: "", value: "" }]);
+              t.length ? N(t) : N([{ key: "", value: "" }]);
             }
           },
-          R = p.a.createElement("span", { className: "start-brace" }, "{"),
-          C = p.a.createElement("span", { className: "end-brace" }, "}");
-        return _.length
+          T = p.a.createElement("span", { className: "start-brace" }, "{"),
+          D = p.a.createElement("span", { className: "end-brace" }, "}");
+        return P.length
           ? p.a.createElement(
               "div",
-              { className: "json-as-form ".concat(m) },
-              p.a.createElement("div", null, R),
-              _.map(function(e, t) {
-                var r = _.length === t + 1;
-                return p.a.createElement(d, {
+              { className: "json-as-form ".concat(d) },
+              p.a.createElement("div", null, T),
+              P.map(function(e, t) {
+                var r = P.length === t + 1;
+                return p.a.createElement(g, {
                   row: e,
                   key: t,
                   isLast: r,
                   fixedKeys: n,
                   onChange: function(e, n) {
-                    return N._onChangeRow(e, n, t, r);
+                    return A._onChangeRow(e, n, t, r);
                   },
                   onToggleRowStatus: function(e) {
-                    return N._onToggleRowStatus(e, t);
+                    return A._onToggleRowStatus(e, t);
                   },
                   onRemoveRow: function() {
-                    return N._onRemoveRow(t);
+                    return A._onRemoveRow(t);
                   },
-                  showCheckBox: !S.current,
-                  rowInterpolator: O
+                  showCheckBox: !_.current,
+                  rowInterpolator: E
                 });
               }),
-              p.a.createElement("div", null, C),
-              h &&
+              p.a.createElement("div", null, D),
+              x &&
                 p.a.createElement(
                   "div",
                   null,
-                  p.a.createElement("pre", null, JSON.stringify(_, 2, 2)),
+                  p.a.createElement("pre", null, JSON.stringify(P, 2, 2)),
                   p.a.createElement("pre", null, JSON.stringify(t, 2, 2))
                 )
             )
-          : p.a.createElement("div", { className: "json-as-form ".concat(m) });
+          : p.a.createElement("div", { className: "json-as-form ".concat(d) });
       };
     },
     function(e, t) {
@@ -731,16 +800,16 @@
             a = void 0;
           try {
             for (
-              var c, i = e[Symbol.iterator]();
-              !(r = (c = i.next()).done) &&
-              (n.push(c.value), !t || n.length !== t);
+              var i, c = e[Symbol.iterator]();
+              !(r = (i = c.next()).done) &&
+              (n.push(i.value), !t || n.length !== t);
               r = !0
             );
           } catch (e) {
             (o = !0), (a = e);
           } finally {
             try {
-              r || null == i.return || i.return();
+              r || null == c.return || c.return();
             } finally {
               if (o) throw a;
             }
@@ -762,10 +831,10 @@
       if (!Object.keys) {
         var o = Object.prototype.hasOwnProperty,
           a = Object.prototype.toString,
-          c = n(8),
-          i = Object.prototype.propertyIsEnumerable,
-          u = !i.call({ toString: null }, "toString"),
-          l = i.call(function() {}, "prototype"),
+          i = n(9),
+          c = Object.prototype.propertyIsEnumerable,
+          u = !c.call({ toString: null }, "toString"),
+          l = c.call(function() {}, "prototype"),
           s = [
             "toString",
             "toLocaleString",
@@ -827,19 +896,19 @@
         r = function(e) {
           var t = null !== e && "object" == typeof e,
             n = "[object Function]" === a.call(e),
-            r = c(e),
-            i = t && "[object String]" === a.call(e),
+            r = i(e),
+            c = t && "[object String]" === a.call(e),
             p = [];
           if (!t && !n && !r)
             throw new TypeError("Object.keys called on a non-object");
-          var b = l && n;
-          if (i && e.length > 0 && !o.call(e, 0))
-            for (var m = 0; m < e.length; ++m) p.push(String(m));
-          if (r && e.length > 0)
+          var v = l && n;
+          if (c && e.length > 0 && !o.call(e, 0))
             for (var d = 0; d < e.length; ++d) p.push(String(d));
+          if (r && e.length > 0)
+            for (var m = 0; m < e.length; ++m) p.push(String(m));
           else
-            for (var v in e)
-              (b && "prototype" === v) || !o.call(e, v) || p.push(String(v));
+            for (var b in e)
+              (v && "prototype" === b) || !o.call(e, b) || p.push(String(b));
           if (u)
             for (
               var g = (function(e) {
@@ -871,7 +940,7 @@
             "[object Arguments]" === o.call(e)
           );
         },
-        c = function(e) {
+        i = function(e) {
           return (
             !!a(e) ||
             (null !== e &&
@@ -882,10 +951,10 @@
               "[object Function]" === o.call(e.callee))
           );
         },
-        i = (function() {
+        c = (function() {
           return a(arguments);
         })();
-      (a.isLegacyArguments = c), (e.exports = i ? a : c);
+      (a.isLegacyArguments = i), (e.exports = c ? a : i);
     },
     function(e, t, n) {
       "use strict";
@@ -900,15 +969,15 @@
     },
     function(e, t, n) {
       "use strict";
-      var r = n(22),
+      var r = n(25),
         o = RegExp.prototype.exec,
         a = Object.getOwnPropertyDescriptor,
-        c = Object.prototype.toString,
-        i =
+        i = Object.prototype.toString,
+        c =
           "function" == typeof Symbol && "symbol" == typeof Symbol.toStringTag;
       e.exports = function(e) {
         if (!e || "object" != typeof e) return !1;
-        if (!i) return "[object RegExp]" === c.call(e);
+        if (!c) return "[object RegExp]" === i.call(e);
         var t = a(e, "lastIndex");
         return (
           !(!t || !r(t, "value")) &&
@@ -927,12 +996,12 @@
     },
     function(e, t, n) {
       "use strict";
-      var r = n(23);
+      var r = n(26);
       e.exports = r.call(Function.call, Object.prototype.hasOwnProperty);
     },
     function(e, t, n) {
       "use strict";
-      var r = n(24);
+      var r = n(27);
       e.exports = Function.prototype.bind || r;
     },
     function(e, t, n) {
@@ -946,15 +1015,15 @@
           throw new TypeError(r + t);
         for (
           var n,
-            c = o.call(arguments, 1),
-            i = function() {
+            i = o.call(arguments, 1),
+            c = function() {
               if (this instanceof n) {
-                var r = t.apply(this, c.concat(o.call(arguments)));
+                var r = t.apply(this, i.concat(o.call(arguments)));
                 return Object(r) === r ? r : this;
               }
-              return t.apply(e, c.concat(o.call(arguments)));
+              return t.apply(e, i.concat(o.call(arguments)));
             },
-            u = Math.max(0, t.length - c.length),
+            u = Math.max(0, t.length - i.length),
             l = [],
             s = 0;
           s < u;
@@ -967,7 +1036,7 @@
             "return function (" +
               l.join(",") +
               "){ return binder.apply(this,arguments); }"
-          )(i)),
+          )(c)),
           t.prototype)
         ) {
           var f = function() {};
@@ -981,24 +1050,24 @@
     function(e, t, n) {
       "use strict";
       var r = n(6),
-        o = n(9),
-        a = n(10),
-        c = n(26),
-        i = Function.call.bind(o);
-      r(i, { getPolyfill: a, implementation: o, shim: c }), (e.exports = i);
+        o = n(10),
+        a = n(11),
+        i = n(29),
+        c = Function.call.bind(o);
+      r(c, { getPolyfill: a, implementation: o, shim: i }), (e.exports = c);
     },
     function(e, t, n) {
       "use strict";
       var r = n(6).supportsDescriptors,
-        o = n(10),
+        o = n(11),
         a = Object.getOwnPropertyDescriptor,
-        c = Object.defineProperty,
-        i = TypeError,
+        i = Object.defineProperty,
+        c = TypeError,
         u = Object.getPrototypeOf,
         l = /a/;
       e.exports = function() {
         if (!r || !u)
-          throw new i(
+          throw new c(
             "RegExp.prototype.flags requires a true ES5 environment that supports property descriptors"
           );
         var e = o(),
@@ -1006,7 +1075,7 @@
           n = a(t, "flags");
         return (
           (n && n.get === e) ||
-            c(t, "flags", { configurable: !0, enumerable: !1, get: e }),
+            i(t, "flags", { configurable: !0, enumerable: !1, get: e }),
           e
         );
       };
@@ -1034,16 +1103,72 @@
       };
     },
     function(e, t, n) {
-      var r = n(29);
+      var r,
+        o,
+        a = n(12),
+        i = n(13),
+        c = 0,
+        u = 0;
+      e.exports = function(e, t, n) {
+        var l = (t && n) || 0,
+          s = t || [],
+          f = (e = e || {}).node || r,
+          p = void 0 !== e.clockseq ? e.clockseq : o;
+        if (null == f || null == p) {
+          var y = a();
+          null == f && (f = r = [1 | y[0], y[1], y[2], y[3], y[4], y[5]]),
+            null == p && (p = o = 16383 & ((y[6] << 8) | y[7]));
+        }
+        var v = void 0 !== e.msecs ? e.msecs : new Date().getTime(),
+          d = void 0 !== e.nsecs ? e.nsecs : u + 1,
+          m = v - c + (d - u) / 1e4;
+        if (
+          (m < 0 && void 0 === e.clockseq && (p = (p + 1) & 16383),
+          (m < 0 || v > c) && void 0 === e.nsecs && (d = 0),
+          d >= 1e4)
+        )
+          throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+        (c = v), (u = d), (o = p);
+        var b = (1e4 * (268435455 & (v += 122192928e5)) + d) % 4294967296;
+        (s[l++] = (b >>> 24) & 255),
+          (s[l++] = (b >>> 16) & 255),
+          (s[l++] = (b >>> 8) & 255),
+          (s[l++] = 255 & b);
+        var g = (v / 4294967296 * 1e4) & 268435455;
+        (s[l++] = (g >>> 8) & 255),
+          (s[l++] = 255 & g),
+          (s[l++] = ((g >>> 24) & 15) | 16),
+          (s[l++] = (g >>> 16) & 255),
+          (s[l++] = (p >>> 8) | 128),
+          (s[l++] = 255 & p);
+        for (var h = 0; h < 6; ++h) s[l + h] = f[h];
+        return t || i(s);
+      };
+    },
+    function(e, t, n) {
+      var r = n(12),
+        o = n(13);
+      e.exports = function(e, t, n) {
+        var a = (t && n) || 0;
+        "string" == typeof e &&
+          ((t = "binary" === e ? new Array(16) : null), (e = null));
+        var i = (e = e || {}).random || (e.rng || r)();
+        if (((i[6] = (15 & i[6]) | 64), (i[8] = (63 & i[8]) | 128), t))
+          for (var c = 0; c < 16; ++c) t[a + c] = i[c];
+        return t || o(i);
+      };
+    },
+    function(e, t, n) {
+      var r = n(34);
       "string" == typeof r && (r = [[e.i, r, ""]]);
       var o = { insert: "head", singleton: !1 };
-      n(31)(r, o);
+      n(36)(r, o);
       r.locals && (e.exports = r.locals);
     },
     function(e, t, n) {
-      (e.exports = n(30)(!1)).push([
+      (e.exports = n(35)(!1)).push([
         e.i,
-        ".json-as-form {\r\n    margin-left: 10px;\r\n}\r\n.json-as-form .start-brace,\r\n.json-as-form .end-brace {\r\n    color: #2025bb;\r\n}\r\n\r\n.json-as-form .json-row {\r\n\r\n}\r\n\r\n.json-as-form input.json_row--checkbox {\r\n    margin-left: 10px;\r\n    cursor: pointer\r\n}\r\n\r\n.json-as-form .json_row--keyQuote {\r\n    color: #167af6;\r\n    font-size: 14px;\r\n}\r\n.json-as-form .json_row--valueQuote {\r\n    color: #cd6a42;\r\n    font-size: 14px;\r\n}\r\n\r\n.json-as-form .json_row--keyWrapper {\r\n    margin-left: 5px;\r\n}\r\n\r\n.json-as-form input.json_row--key {\r\n    outline: none;\r\n    min-width: 10px;\r\n    border: none;\r\n    border-bottom: 1px solid #167af6;\r\n    font-size: 14px;\r\n    color: #167af6;\r\n}\r\n\r\n.json-as-form select.json_row--value {\r\n    outline: none;\r\n    width: 60px;\r\n    border: none;\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #cd6a42;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form input.json_row--value {\r\n    outline: none;\r\n    min-width: 10px;\r\n    border: none;\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #cd6a42;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form span.json_row--value {\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #767676;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form div.json-row span.json_row--remove {\r\n    display: none;\r\n}\r\n\r\n.json-as-form div.json-row:hover span.json_row--remove {\r\n    display: inline;\r\n}\r\n",
+        ".json-as-form {\r\n    margin-left: 10px;\r\n}\r\n.json-as-form .start-brace,\r\n.json-as-form .end-brace {\r\n    color: #2025bb;\r\n}\r\n\r\n.json-as-form .json-row {\r\n\r\n}\r\n\r\n.json-as-form input.json_row--checkbox {\r\n    margin-left: 10px;\r\n    cursor: pointer\r\n}\r\n\r\n.json-as-form .json_row--keyQuote {\r\n    color: #167af6;\r\n    font-size: 14px;\r\n}\r\n.json-as-form .json_row--valueQuote {\r\n    color: #cd6a42;\r\n    font-size: 14px;\r\n}\r\n\r\n.json-as-form .json_row--keyWrapper {\r\n    margin-left: 5px;\r\n}\r\n\r\n.json-as-form input.json_row--key {\r\n    outline: none;\r\n    min-width: 10px;\r\n    border: none;\r\n    border-bottom: 1px solid #167af6;\r\n    font-size: 14px;\r\n    color: #167af6;\r\n}\r\n\r\n.json-as-form select.json_row--value {\r\n    outline: none;\r\n    width: 60px;\r\n    border: none;\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #cd6a42;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form input.json_row--value {\r\n    outline: none;\r\n    min-width: 10px;\r\n    border: none;\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #cd6a42;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form input.json_row--file {\r\n    outline: none;\r\n    margin: 5px auto;\r\n    border: none;\r\n    font-size: 14px;\r\n    color: #cd6a42;\r\n    min-width: 10px;\r\n    max-width: 175px;\r\n    line-height: 2.5;\r\n}\r\n\r\n.json-as-form span.json_row--value {\r\n    border-bottom: 1px solid #cd6a42;\r\n    font-size: 14px;\r\n    color: #767676;\r\n    max-width: 250px;\r\n}\r\n\r\n.json-as-form div.json-row span.json_row--remove {\r\n    display: none;\r\n}\r\n\r\n.json-as-form div.json-row:hover span.json_row--remove {\r\n    display: inline;\r\n}\r\n",
         ""
       ]);
     },
@@ -1059,10 +1184,10 @@
                   r = e[3];
                 if (!r) return n;
                 if (t && "function" == typeof btoa) {
-                  var o = ((c = r),
-                    (i = btoa(unescape(encodeURIComponent(JSON.stringify(c))))),
+                  var o = ((i = r),
+                    (c = btoa(unescape(encodeURIComponent(JSON.stringify(i))))),
                     (u = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(
-                      i
+                      c
                     )),
                     "/*# ".concat(u, " */")),
                     a = r.sources.map(function(e) {
@@ -1075,7 +1200,7 @@
                     .concat([o])
                     .join("\n");
                 }
-                var c, i, u;
+                var i, c, u;
                 return [n].join("\n");
               })(t, e);
               return t[2] ? "@media ".concat(t[2], "{").concat(n, "}") : n;
@@ -1087,13 +1212,13 @@
               var a = this[o][0];
               null != a && (r[a] = !0);
             }
-            for (var c = 0; c < e.length; c++) {
-              var i = e[c];
-              (null != i[0] && r[i[0]]) ||
-                (n && !i[2]
-                  ? (i[2] = n)
-                  : n && (i[2] = "(".concat(i[2], ") and (").concat(n, ")")),
-                t.push(i));
+            for (var i = 0; i < e.length; i++) {
+              var c = e[i];
+              (null != c[0] && r[c[0]]) ||
+                (n && !c[2]
+                  ? (c[2] = n)
+                  : n && (c[2] = "(".concat(c[2], ") and (").concat(n, ")")),
+                t.push(c));
             }
           }),
           t
@@ -1111,7 +1236,7 @@
             r
           );
         },
-        c = (function() {
+        i = (function() {
           var e = {};
           return function(t) {
             if (void 0 === e[t]) {
@@ -1130,12 +1255,12 @@
             return e[t];
           };
         })();
-      function i(e, t) {
+      function c(e, t) {
         for (var n = [], r = {}, o = 0; o < e.length; o++) {
           var a = e[o],
-            c = t.base ? a[0] + t.base : a[0],
-            i = { css: a[1], media: a[2], sourceMap: a[3] };
-          r[c] ? r[c].parts.push(i) : n.push((r[c] = { id: c, parts: [i] }));
+            i = t.base ? a[0] + t.base : a[0],
+            c = { css: a[1], media: a[2], sourceMap: a[3] };
+          r[i] ? r[i].parts.push(c) : n.push((r[i] = { id: i, parts: [c] }));
         }
         return n;
       }
@@ -1143,13 +1268,13 @@
         for (var n = 0; n < e.length; n++) {
           var r = e[n],
             a = o[r.id],
-            c = 0;
+            i = 0;
           if (a) {
-            for (a.refs++; c < a.parts.length; c++) a.parts[c](r.parts[c]);
-            for (; c < r.parts.length; c++) a.parts.push(d(r.parts[c], t));
+            for (a.refs++; i < a.parts.length; i++) a.parts[i](r.parts[i]);
+            for (; i < r.parts.length; i++) a.parts.push(m(r.parts[i], t));
           } else {
-            for (var i = []; c < r.parts.length; c++) i.push(d(r.parts[c], t));
-            o[r.id] = { id: r.id, refs: 1, parts: i };
+            for (var c = []; i < r.parts.length; i++) c.push(m(r.parts[i], t));
+            o[r.id] = { id: r.id, refs: 1, parts: c };
           }
         }
       }
@@ -1167,7 +1292,7 @@
         )
           e.insert(t);
         else {
-          var o = c(e.insert || "head");
+          var o = i(e.insert || "head");
           if (!o)
             throw new Error(
               "Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid."
@@ -1186,9 +1311,9 @@
         if (e.styleSheet) e.styleSheet.cssText = f(t, o);
         else {
           var a = document.createTextNode(o),
-            c = e.childNodes;
-          c[t] && e.removeChild(c[t]),
-            c.length ? e.insertBefore(a, c[t]) : e.appendChild(a);
+            i = e.childNodes;
+          i[t] && e.removeChild(i[t]),
+            i.length ? e.insertBefore(a, i[t]) : e.appendChild(a);
         }
       }
       function y(e, t, n) {
@@ -1211,13 +1336,13 @@
           e.appendChild(document.createTextNode(r));
         }
       }
-      var b = null,
-        m = 0;
-      function d(e, t) {
+      var v = null,
+        d = 0;
+      function m(e, t) {
         var n, r, o;
         if (t.singleton) {
-          var a = m++;
-          (n = b || (b = l(t))),
+          var a = d++;
+          (n = v || (v = l(t))),
             (r = p.bind(null, n, a, !1)),
             (o = p.bind(null, n, a, !0));
         } else
@@ -1248,16 +1373,16 @@
         ((t = t || {}).attributes =
           "object" == typeof t.attributes ? t.attributes : {}),
           t.singleton || "boolean" == typeof t.singleton || (t.singleton = a());
-        var n = i(e, t);
+        var n = c(e, t);
         return (
           u(n, t),
           function(e) {
             for (var r = [], a = 0; a < n.length; a++) {
-              var c = n[a],
-                l = o[c.id];
+              var i = n[a],
+                l = o[i.id];
               l && (l.refs--, r.push(l));
             }
-            e && u(i(e, t), t);
+            e && u(c(e, t), t);
             for (var s = 0; s < r.length; s++) {
               var f = r[s];
               if (0 === f.refs) {
@@ -1278,29 +1403,34 @@
       var r = n(5),
         o = n.n(r),
         a = n(0),
-        c = n.n(a),
-        i = n(32),
-        u = n.n(i),
-        l = n(11);
+        i = n.n(a),
+        c = n(37),
+        u = n.n(c),
+        l = n(14);
       u.a.render(
-        c.a.createElement(function() {
+        i.a.createElement(function() {
           var e = Object(a.useState)({}),
             t = o()(e, 2),
             n = t[0],
             r = t[1],
-            i = Object(a.useState)([]),
-            u = o()(i, 2),
+            c = Object(a.useState)([
+              { key: "name", value: "json-as-form", type: "string" },
+              { key: "file", value: "", type: "file" },
+              { key: "is OSS?", value: !1, type: "boolean" }
+            ]),
+            u = o()(c, 2),
             s = u[0],
             f = u[1];
-          return c.a.createElement(
+          return i.a.createElement(
             "div",
             null,
-            c.a.createElement("pre", null, JSON.stringify(n, 4, 4)),
-            c.a.createElement(l.default, {
+            i.a.createElement("pre", null, JSON.stringify(n, 4, 4)),
+            i.a.createElement(l.default, {
               json: n,
               fixedKeys: [],
               debug: !1,
               autoAddRow: !0,
+              detach: !0,
               onChange: function(e) {
                 r(e);
               },
@@ -1312,7 +1442,7 @@
                 );
               }
             }),
-            c.a.createElement(l.default, {
+            i.a.createElement(l.default, {
               json: s,
               fixedKeys: [],
               debug: !1,
@@ -1327,7 +1457,8 @@
                   e
                 );
               }
-            })
+            }),
+            i.a.createElement("pre", null, JSON.stringify(s, 4, 4))
           );
         }, null),
         document.getElementById("root")

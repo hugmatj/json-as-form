@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import equal from "deep-equal";
+import uuid from "uuid";
 
 import Row from "./Row";
 import "./index.css";
@@ -10,6 +11,7 @@ const JSONForm = ({
   detach = false,
   autoAddRow = false,
   className = "",
+  rowIdKey = "uuid",
   debug = false,
   onChange,
   rowInterpolator = row => row
@@ -38,6 +40,12 @@ const JSONForm = ({
           json = [{ key: "", value: "" }];
         }
         if (!equal(json, _fns._toJSON())) {
+          json = json.map(j => {
+            if (!j[rowIdKey]) {
+              j[rowIdKey] = uuid.v4(); //add uuid if not exists
+            }
+            return j;
+          });
           setParsedJSON([...json]);
         }
       }
@@ -97,7 +105,10 @@ const JSONForm = ({
     },
     _addNewRow: () => {
       // console.log(parsedJSON);
-      setParsedJSON([...parsedJSON, { key: "", value: "" }]);
+      setParsedJSON([
+        ...parsedJSON,
+        { [rowIdKey]: uuid.v4(), key: "", value: "" }
+      ]);
     },
     _onChangeRow: (k, v, i, isLast) => {
       // console.log(k, v, i);

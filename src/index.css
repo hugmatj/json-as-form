@@ -57,6 +57,17 @@
     max-width: 250px;
 }
 
+.json-as-form input.json_row--file {
+    outline: none;
+    margin: 5px auto;
+    border: none;
+    font-size: 14px;
+    color: #cd6a42;
+    min-width: 10px;
+    max-width: 175px;
+    line-height: 2.5;
+}
+
 .json-as-form span.json_row--value {
     border-bottom: 1px solid #cd6a42;
     font-size: 14px;
