@@ -35,7 +35,7 @@ const App = () => {
         fixedKeys={[]}
         debug={false}
         autoAddRow={true}
-        detach={true}
+        detach={false}
         onChange={v => {
           // console.log(v);
           setState(v);

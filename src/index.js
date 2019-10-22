@@ -37,16 +37,19 @@ const JSONForm = ({
         }
       } else {
         if (autoAddRow && (!json || !json.length)) {
-          json = [{ key: "", value: "" }];
+          json = [_fns._getEmptyRowSkeleton()];
         }
         if (!equal(json, _fns._toJSON())) {
-          json = json.map(j => {
-            if (!j[rowIdKey]) {
-              j[rowIdKey] = uuid.v4(); //add uuid if not exists
+          let jsonArr = json.map(j => {
+            let obj = {
+              ...j
+            };
+            if (!obj[rowIdKey]) {
+              obj[rowIdKey] = uuid.v4(); //add uuid if not exists
             }
             return j;
           });
-          setParsedJSON([...json]);
+          setParsedJSON([...jsonArr]);
         }
       }
     },
@@ -61,6 +64,9 @@ const JSONForm = ({
         // console.log("in parsed json callback");
         if (typeof onChange == "function") {
           let res = _fns._toJSON();
+
+          console.log(res, json, equal(res, json));
+
           if (!equal(res, json)) {
             onChange(res);
           }
@@ -81,7 +87,7 @@ const JSONForm = ({
       });
 
       if (autoAddRow && (!rows || !rows.length)) {
-        rows = [{ key: "", value: "" }];
+        rows = [_fns._getEmptyRowSkeleton()];
       }
 
       let lastIndex = rows.length - 1;
@@ -90,7 +96,7 @@ const JSONForm = ({
         rows[lastIndex] &&
         (rows[lastIndex].key || rows[lastIndex].value)
       ) {
-        rows = [...rows, { key: "", value: "" }];
+        rows = [...rows, _fns._getEmptyRowSkeleton()];
       }
       return rows;
     },
@@ -100,15 +106,17 @@ const JSONForm = ({
           .filter(j => j.key)
           .reduce((p, n) => ({ ...p, [n.key]: n.value }), {});
       } else {
+        console.log(parsedJSON, parsedJSON.filter(j => j.key));
         return parsedJSON.filter(j => j.key);
       }
     },
+    _getEmptyRowSkeleton: () => {
+      return { [rowIdKey]: uuid.v4(), key: "", value: "" };
+    },
+
     _addNewRow: () => {
       // console.log(parsedJSON);
-      setParsedJSON([
-        ...parsedJSON,
-        { [rowIdKey]: uuid.v4(), key: "", value: "" }
-      ]);
+      setParsedJSON([...parsedJSON, _fns._getEmptyRowSkeleton()]);
     },
     _onChangeRow: (k, v, i, isLast) => {
       // console.log(k, v, i);
@@ -122,15 +130,18 @@ const JSONForm = ({
       });
 
       setParsedJSON(
-        isLast && autoAddRow === true ? [...rows, { key: "", value: "" }] : rows
+        isLast && autoAddRow === true
+          ? [...rows, _fns._getEmptyRowSkeleton()]
+          : rows
       );
     },
-    _onToggleRowStatus: (disblbe = false, i) => {
+    _onToggleRowStatus: (disable = false, i) => {
       let rows = parsedJSON.map((j, ii) => {
+        let obj = { ...j };
         if (ii === i) {
-          j.disable = disblbe;
+          obj.disable = disable;
         }
-        return j;
+        return obj;
       });
       setParsedJSON(rows);
     },
@@ -139,7 +150,7 @@ const JSONForm = ({
         return ii !== i;
       });
       if (!rows.length) {
-        setParsedJSON([{ key: "", value: "" }]);
+        setParsedJSON([_fns._getEmptyRowSkeleton()]);
       } else {
         setParsedJSON(rows);
       }
