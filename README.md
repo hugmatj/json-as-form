@@ -26,6 +26,9 @@
 
 </div>
 
+## Live Demo
+https://codesandbox.io/s/json-as-form-demo-2si2l
+
 # Usage
 ```javascript
 import JSONForm from "json-as-form";
@@ -41,6 +44,7 @@ import JSONForm from "json-as-form";
   }}
 />
 ```
+
 **Props**
 
 |name  | required | defaultvalue  | description |
