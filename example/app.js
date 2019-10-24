@@ -29,7 +29,7 @@ const App = () => {
 
   return (
     <div>
-      <pre>{JSON.stringify(state, 4, 4)}</pre>
+      <h4>Stateless Form</h4>
       <JSONForm
         json={state}
         fixedKeys={[]}
@@ -46,12 +46,18 @@ const App = () => {
           return row;
         }}
       />
+      <pre>{JSON.stringify(state, 4, 4)}</pre>
 
+      <br />
+      <br />
+      <br />
+      <h4>Statefull Form</h4>
       <JSONForm
         json={jsonArr}
         fixedKeys={[]}
         debug={false}
         autoAddRow={true}
+        rowIdKey={"id"}
         onChange={v => {
           // console.log(v);
           setJsonArr(v);

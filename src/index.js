@@ -47,8 +47,10 @@ const JSONForm = ({
             if (!obj[rowIdKey]) {
               obj[rowIdKey] = uuid.v4(); //add uuid if not exists
             }
-            return j;
+            return obj;
           });
+
+          console.log(jsonArr, 8889);
           setParsedJSON([...jsonArr]);
         }
       }
@@ -116,6 +118,7 @@ const JSONForm = ({
 
     _addNewRow: () => {
       // console.log(parsedJSON);
+      debugger;
       setParsedJSON([...parsedJSON, _fns._getEmptyRowSkeleton()]);
     },
     _onChangeRow: (k, v, i, isLast) => {
