@@ -89,6 +89,70 @@
         return r(e) || o(e) || a();
       };
     },
+    function(e, t, n) {
+      var r = n(8),
+        o = n(22),
+        a = n(23),
+        i = n(24),
+        c = n(28),
+        u = n(30),
+        l = Date.prototype.getTime;
+      function s(e, t, n) {
+        var y = n || {};
+        return (
+          !(y.strict ? !a(e, t) : e !== t) ||
+          (!e || !t || ("object" != typeof e && "object" != typeof t)
+            ? y.strict
+              ? a(e, t)
+              : e == t
+            : (function(e, t, n) {
+                var a, y;
+                if (typeof e != typeof t) return !1;
+                if (f(e) || f(t)) return !1;
+                if (e.prototype !== t.prototype) return !1;
+                if (o(e) !== o(t)) return !1;
+                var m = i(e),
+                  d = i(t);
+                if (m !== d) return !1;
+                if (m || d) return e.source === t.source && c(e) === c(t);
+                if (u(e) && u(t)) return l.call(e) === l.call(t);
+                var v = p(e),
+                  b = p(t);
+                if (v !== b) return !1;
+                if (v || b) {
+                  if (e.length !== t.length) return !1;
+                  for (a = 0; a < e.length; a++) if (e[a] !== t[a]) return !1;
+                  return !0;
+                }
+                if (typeof e != typeof t) return !1;
+                try {
+                  var g = r(e),
+                    h = r(t);
+                } catch (e) {
+                  return !1;
+                }
+                if (g.length !== h.length) return !1;
+                for (g.sort(), h.sort(), a = g.length - 1; a >= 0; a--)
+                  if (g[a] != h[a]) return !1;
+                for (a = g.length - 1; a >= 0; a--)
+                  if (((y = g[a]), !s(e[y], t[y], n))) return !1;
+                return !0;
+              })(e, t, y))
+        );
+      }
+      function f(e) {
+        return null == e;
+      }
+      function p(e) {
+        return (
+          !(!e || "object" != typeof e || "number" != typeof e.length) &&
+          ("function" == typeof e.copy &&
+            "function" == typeof e.slice &&
+            !(e.length > 0 && "number" != typeof e[0]))
+        );
+      }
+      e.exports = s;
+    },
     function(e, t) {
       function n(e) {
         return (n =
@@ -123,70 +187,6 @@
         );
       }
       e.exports = r;
-    },
-    function(e, t, n) {
-      var r = n(8),
-        o = n(22),
-        a = n(23),
-        i = n(24),
-        c = n(28),
-        u = n(30),
-        l = Date.prototype.getTime;
-      function s(e, t, n) {
-        var y = n || {};
-        return (
-          !(y.strict ? !a(e, t) : e !== t) ||
-          (!e || !t || ("object" != typeof e && "object" != typeof t)
-            ? y.strict
-              ? a(e, t)
-              : e == t
-            : (function(e, t, n) {
-                var a, y;
-                if (typeof e != typeof t) return !1;
-                if (f(e) || f(t)) return !1;
-                if (e.prototype !== t.prototype) return !1;
-                if (o(e) !== o(t)) return !1;
-                var v = i(e),
-                  d = i(t);
-                if (v !== d) return !1;
-                if (v || d) return e.source === t.source && c(e) === c(t);
-                if (u(e) && u(t)) return l.call(e) === l.call(t);
-                var m = p(e),
-                  b = p(t);
-                if (m !== b) return !1;
-                if (m || b) {
-                  if (e.length !== t.length) return !1;
-                  for (a = 0; a < e.length; a++) if (e[a] !== t[a]) return !1;
-                  return !0;
-                }
-                if (typeof e != typeof t) return !1;
-                try {
-                  var g = r(e),
-                    h = r(t);
-                } catch (e) {
-                  return !1;
-                }
-                if (g.length !== h.length) return !1;
-                for (g.sort(), h.sort(), a = g.length - 1; a >= 0; a--)
-                  if (g[a] != h[a]) return !1;
-                for (a = g.length - 1; a >= 0; a--)
-                  if (((y = g[a]), !s(e[y], t[y], n))) return !1;
-                return !0;
-              })(e, t, y))
-        );
-      }
-      function f(e) {
-        return null == e;
-      }
-      function p(e) {
-        return (
-          !(!e || "object" != typeof e || "number" != typeof e.length) &&
-          ("function" == typeof e.copy &&
-            "function" == typeof e.slice &&
-            !(e.length > 0 && "number" != typeof e[0]))
-        );
-      }
-      e.exports = s;
     },
     function(e, t, n) {
       var r = n(18),
@@ -382,7 +382,7 @@
     function(e, t, n) {
       "use strict";
       n.r(t);
-      var r = n(3),
+      var r = n(4),
         o = n.n(r),
         a = n(2),
         i = n.n(a),
@@ -392,10 +392,10 @@
         s = n.n(l),
         f = n(0),
         p = n.n(f),
-        y = n(4),
-        v = n.n(y),
+        y = n(3),
+        m = n.n(y),
         d = n(7),
-        m = n.n(d);
+        v = n.n(d);
       function b(e, t) {
         var n = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
@@ -431,7 +431,7 @@
               '"'
             );
           },
-          v = function(e) {
+          m = function(e) {
             var n = e.target,
               r = n.type,
               o = n.value,
@@ -512,7 +512,7 @@
                   {
                     className: "json_row--value",
                     value: !!t.value,
-                    onChange: v
+                    onChange: m
                   },
                   p.a.createElement("option", { value: !0 }, "True"),
                   p.a.createElement("option", { value: !1 }, "False")
@@ -527,7 +527,7 @@
                   : p.a.createElement("input", {
                       type: "file",
                       onChange: function(e) {
-                        return v(e);
+                        return m(e);
                       },
                       onClick: function(e) {
                         e.target.value = null;
@@ -542,7 +542,7 @@
                         type: t.key.includes("password") ? "password" : "text",
                         value: t.value || "",
                         onChange: function(e) {
-                          return v(e);
+                          return m(e);
                         },
                         className: "json_row--value",
                         style: {
@@ -631,14 +631,17 @@
             if (!1 !== k.current || !0 !== a)
               if (((_.current = !Array.isArray(t)), 1 == _.current)) {
                 var e = A._parseJSON(j({}, t));
-                v()(e, P) || N(e);
-              } else
-                !l || (t && t.length) || (t = [{ key: "", value: "" }]),
-                  v()(t, A._toJSON()) ||
-                    ((t = t.map(function(e) {
-                      return e[h] || (e[h] = m.a.v4()), e;
-                    })),
-                    N(i()(t)));
+                m()(e, P) || N(e);
+              } else if (
+                (!l || (t && t.length) || (t = [A._getEmptyRowSkeleton()]),
+                !m()(t, A._toJSON()))
+              ) {
+                var n = t.map(function(e) {
+                  var t = j({}, e);
+                  return t[h] || (t[h] = v.a.v4()), t;
+                });
+                console.log(n, 8889), N(i()(n));
+              }
           },
           [t]
         ),
@@ -647,7 +650,7 @@
               if (k.current) k.current = !1;
               else if ("function" == typeof O) {
                 var e = A._toJSON();
-                v()(e, t) || O(e);
+                console.log(e, t, m()(e, t)), m()(e, t) || O(e);
               }
             },
             [P]
@@ -661,13 +664,13 @@
                 t = Object.keys(e).map(function(t, n) {
                   return { key: t, value: e[t], type: e.type || o()(e[t]) };
                 });
-              !l || (t && t.length) || (t = [{ key: "", value: "" }]);
+              !l || (t && t.length) || (t = [A._getEmptyRowSkeleton()]);
               var n = t.length - 1;
               return (
                 !0 === l &&
                   t[n] &&
                   (t[n].key || t[n].value) &&
-                  (t = [].concat(i()(t), [{ key: "", value: "" }])),
+                  (t = [].concat(i()(t), [A._getEmptyRowSkeleton()])),
                 t
               );
             },
@@ -678,21 +681,28 @@
                   }).reduce(function(e, t) {
                     return j({}, e, u()({}, t.key, t.value));
                   }, {})
-                : P.filter(function(e) {
+                : (console.log(
+                    P,
+                    P.filter(function(e) {
+                      return e.key;
+                    })
+                  ),
+                  P.filter(function(e) {
                     return e.key;
-                  });
+                  }));
+            },
+            _getEmptyRowSkeleton: function() {
+              var e;
+              return (
+                (e = {}),
+                u()(e, h, v.a.v4()),
+                u()(e, "key", ""),
+                u()(e, "value", ""),
+                e
+              );
             },
             _addNewRow: function() {
-              var e;
-              N(
-                [].concat(i()(P), [
-                  ((e = {}),
-                  u()(e, h, m.a.v4()),
-                  u()(e, "key", ""),
-                  u()(e, "value", ""),
-                  e)
-                ])
-              );
+              N([].concat(i()(P), [A._getEmptyRowSkeleton()]));
             },
             _onChangeRow: function(e, t, n, r) {
               var o = P.map(function(r, o) {
@@ -700,7 +710,9 @@
                 return o === n && ((a.key = e), (a.value = t)), a;
               });
               N(
-                r && !0 === l ? [].concat(i()(o), [{ key: "", value: "" }]) : o
+                r && !0 === l
+                  ? [].concat(i()(o), [A._getEmptyRowSkeleton()])
+                  : o
               );
             },
             _onToggleRowStatus: function() {
@@ -710,7 +722,8 @@
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0,
                 n = P.map(function(n, r) {
-                  return r === t && (n.disable = e), n;
+                  var o = j({}, n);
+                  return r === t && (o.disable = e), o;
                 });
               N(n);
             },
@@ -718,7 +731,7 @@
               var t = P.filter(function(t, n) {
                 return n !== e;
               });
-              t.length ? N(t) : N([{ key: "", value: "" }]);
+              t.length ? N(t) : N([A._getEmptyRowSkeleton()]);
             }
           },
           T = p.a.createElement("span", { className: "start-brace" }, "{"),
@@ -901,14 +914,14 @@
             p = [];
           if (!t && !n && !r)
             throw new TypeError("Object.keys called on a non-object");
-          var v = l && n;
+          var m = l && n;
           if (c && e.length > 0 && !o.call(e, 0))
             for (var d = 0; d < e.length; ++d) p.push(String(d));
           if (r && e.length > 0)
-            for (var m = 0; m < e.length; ++m) p.push(String(m));
+            for (var v = 0; v < e.length; ++v) p.push(String(v));
           else
             for (var b in e)
-              (v && "prototype" === b) || !o.call(e, b) || p.push(String(b));
+              (m && "prototype" === b) || !o.call(e, b) || p.push(String(b));
           if (u)
             for (
               var g = (function(e) {
@@ -1119,22 +1132,22 @@
           null == f && (f = r = [1 | y[0], y[1], y[2], y[3], y[4], y[5]]),
             null == p && (p = o = 16383 & ((y[6] << 8) | y[7]));
         }
-        var v = void 0 !== e.msecs ? e.msecs : new Date().getTime(),
+        var m = void 0 !== e.msecs ? e.msecs : new Date().getTime(),
           d = void 0 !== e.nsecs ? e.nsecs : u + 1,
-          m = v - c + (d - u) / 1e4;
+          v = m - c + (d - u) / 1e4;
         if (
-          (m < 0 && void 0 === e.clockseq && (p = (p + 1) & 16383),
-          (m < 0 || v > c) && void 0 === e.nsecs && (d = 0),
+          (v < 0 && void 0 === e.clockseq && (p = (p + 1) & 16383),
+          (v < 0 || m > c) && void 0 === e.nsecs && (d = 0),
           d >= 1e4)
         )
           throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
-        (c = v), (u = d), (o = p);
-        var b = (1e4 * (268435455 & (v += 122192928e5)) + d) % 4294967296;
+        (c = m), (u = d), (o = p);
+        var b = (1e4 * (268435455 & (m += 122192928e5)) + d) % 4294967296;
         (s[l++] = (b >>> 24) & 255),
           (s[l++] = (b >>> 16) & 255),
           (s[l++] = (b >>> 8) & 255),
           (s[l++] = 255 & b);
-        var g = (v / 4294967296 * 1e4) & 268435455;
+        var g = (m / 4294967296 * 1e4) & 268435455;
         (s[l++] = (g >>> 8) & 255),
           (s[l++] = 255 & g),
           (s[l++] = ((g >>> 24) & 15) | 16),
@@ -1271,9 +1284,9 @@
             i = 0;
           if (a) {
             for (a.refs++; i < a.parts.length; i++) a.parts[i](r.parts[i]);
-            for (; i < r.parts.length; i++) a.parts.push(m(r.parts[i], t));
+            for (; i < r.parts.length; i++) a.parts.push(v(r.parts[i], t));
           } else {
-            for (var c = []; i < r.parts.length; i++) c.push(m(r.parts[i], t));
+            for (var c = []; i < r.parts.length; i++) c.push(v(r.parts[i], t));
             o[r.id] = { id: r.id, refs: 1, parts: c };
           }
         }
@@ -1336,13 +1349,13 @@
           e.appendChild(document.createTextNode(r));
         }
       }
-      var v = null,
+      var m = null,
         d = 0;
-      function m(e, t) {
+      function v(e, t) {
         var n, r, o;
         if (t.singleton) {
           var a = d++;
-          (n = v || (v = l(t))),
+          (n = m || (m = l(t))),
             (r = p.bind(null, n, a, !1)),
             (o = p.bind(null, n, a, !0));
         } else
@@ -1424,13 +1437,13 @@
           return i.a.createElement(
             "div",
             null,
-            i.a.createElement("pre", null, JSON.stringify(n, 4, 4)),
+            i.a.createElement("h4", null, "Stateless Form"),
             i.a.createElement(l.default, {
               json: n,
               fixedKeys: [],
               debug: !1,
               autoAddRow: !0,
-              detach: !0,
+              detach: !1,
               onChange: function(e) {
                 r(e);
               },
@@ -1442,11 +1455,17 @@
                 );
               }
             }),
+            i.a.createElement("pre", null, JSON.stringify(n, 4, 4)),
+            i.a.createElement("br", null),
+            i.a.createElement("br", null),
+            i.a.createElement("br", null),
+            i.a.createElement("h4", null, "Statefull Form"),
             i.a.createElement(l.default, {
               json: s,
               fixedKeys: [],
               debug: !1,
               autoAddRow: !0,
+              rowIdKey: "id",
               onChange: function(e) {
                 f(e);
               },
