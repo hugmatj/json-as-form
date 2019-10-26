@@ -9,7 +9,8 @@ const JSONForm = ({
   json,
   fixedKeys,
   detach = false,
-  autoAddRow = false,
+  autoAddRow = true,
+  defaultValueType = "string",
   className = "",
   rowIdKey = "uuid",
   debug = false,
@@ -113,7 +114,12 @@ const JSONForm = ({
       }
     },
     _getEmptyRowSkeleton: () => {
-      return { [rowIdKey]: uuid.v4(), key: "", value: "" };
+      return {
+        [rowIdKey]: uuid.v4(),
+        key: "",
+        value: "",
+        type: defaultValueType
+      };
     },
 
     _addNewRow: () => {

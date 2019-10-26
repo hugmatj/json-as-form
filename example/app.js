@@ -56,7 +56,9 @@ const App = () => {
         json={jsonArr}
         fixedKeys={[]}
         debug={false}
+        detach={false}
         autoAddRow={true}
+        defaultValueType={"file"}
         rowIdKey={"id"}
         onChange={v => {
           // console.log(v);

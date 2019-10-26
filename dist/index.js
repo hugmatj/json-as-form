@@ -605,57 +605,59 @@
           r = e.detach,
           a = void 0 !== r && r,
           c = e.autoAddRow,
-          l = void 0 !== c && c,
-          y = e.className,
-          v = void 0 === y ? "" : y,
-          b = e.rowIdKey,
-          h = void 0 === b ? "uuid" : b,
-          w = e.debug,
-          x = void 0 !== w && w,
-          O = e.onChange,
-          S = e.rowInterpolator,
-          E =
-            void 0 === S
+          l = void 0 === c || c,
+          y = e.defaultValueType,
+          v = void 0 === y ? "string" : y,
+          b = e.className,
+          h = void 0 === b ? "" : b,
+          w = e.rowIdKey,
+          x = void 0 === w ? "uuid" : w,
+          O = e.debug,
+          S = void 0 !== O && O,
+          E = e.onChange,
+          k = e.rowInterpolator,
+          _ =
+            void 0 === k
               ? function(e) {
                   return e;
                 }
-              : S,
-          k = Object(f.useRef)(!0),
-          _ = Object(f.useRef)(!Array.isArray(t)),
-          R = Object(f.useState)([]),
-          P = s()(R, 2),
-          C = P[0],
-          N = P[1];
+              : k,
+          R = Object(f.useRef)(!0),
+          P = Object(f.useRef)(!Array.isArray(t)),
+          C = Object(f.useState)([]),
+          N = s()(C, 2),
+          T = N[0],
+          A = N[1];
         Object(f.useEffect)(
           function() {
-            if (!1 !== k.current || !0 !== a)
-              if (((_.current = !Array.isArray(t)), 1 == _.current)) {
-                var e = A._parseJSON(j({}, t));
-                m()(e, C) || N(e);
+            if (!1 !== R.current || !0 !== a)
+              if (((P.current = !Array.isArray(t)), 1 == P.current)) {
+                var e = $._parseJSON(j({}, t));
+                m()(e, T) || A(e);
               } else if (
-                (!l || (t && t.length) || (t = [A._getEmptyRowSkeleton()]),
-                !m()(t, A._toJSON()))
+                (!l || (t && t.length) || (t = [$._getEmptyRowSkeleton()]),
+                !m()(t, $._toJSON()))
               ) {
                 var n = t.map(function(e) {
                   var t = j({}, e);
-                  return t[h] || (t[h] = d.a.v4()), t;
+                  return t[x] || (t[x] = d.a.v4()), t;
                 });
-                console.log(n, 8889), N(i()(n));
+                console.log(n, 8889), A(i()(n));
               }
           },
           [t]
         ),
           Object(f.useEffect)(
             function() {
-              if (k.current) k.current = !1;
-              else if ("function" == typeof O) {
-                var e = A._toJSON();
-                console.log(e, t, m()(e, t)), m()(e, t) || O(e);
+              if (R.current) R.current = !1;
+              else if ("function" == typeof E) {
+                var e = $._toJSON();
+                console.log(e, t, m()(e, t)), m()(e, t) || E(e);
               }
             },
-            [C]
+            [T]
           );
-        var A = {
+        var $ = {
             _parseJSON: function() {
               var e =
                   arguments.length > 0 && void 0 !== arguments[0]
@@ -664,30 +666,30 @@
                 t = Object.keys(e).map(function(t, n) {
                   return { key: t, value: e[t], type: e.type || o()(e[t]) };
                 });
-              !l || (t && t.length) || (t = [A._getEmptyRowSkeleton()]);
+              !l || (t && t.length) || (t = [$._getEmptyRowSkeleton()]);
               var n = t.length - 1;
               return (
                 !0 === l &&
                   t[n] &&
                   (t[n].key || t[n].value) &&
-                  (t = [].concat(i()(t), [A._getEmptyRowSkeleton()])),
+                  (t = [].concat(i()(t), [$._getEmptyRowSkeleton()])),
                 t
               );
             },
             _toJSON: function() {
-              return !0 === _.current
-                ? C.filter(function(e) {
+              return !0 === P.current
+                ? T.filter(function(e) {
                     return e.key;
                   }).reduce(function(e, t) {
                     return j({}, e, u()({}, t.key, t.value));
                   }, {})
                 : (console.log(
-                    C,
-                    C.filter(function(e) {
+                    T,
+                    T.filter(function(e) {
                       return e.key;
                     })
                   ),
-                  C.filter(function(e) {
+                  T.filter(function(e) {
                     return e.key;
                   }));
             },
@@ -695,23 +697,24 @@
               var e;
               return (
                 (e = {}),
-                u()(e, h, d.a.v4()),
+                u()(e, x, d.a.v4()),
                 u()(e, "key", ""),
                 u()(e, "value", ""),
+                u()(e, "type", v),
                 e
               );
             },
             _addNewRow: function() {
-              N([].concat(i()(C), [A._getEmptyRowSkeleton()]));
+              A([].concat(i()(T), [$._getEmptyRowSkeleton()]));
             },
             _onChangeRow: function(e, t, n, r) {
-              var o = C.map(function(r, o) {
+              var o = T.map(function(r, o) {
                 var a = j({}, r);
                 return o === n && ((a.key = e), (a.value = t)), a;
               });
-              N(
+              A(
                 r && !0 === l
-                  ? [].concat(i()(o), [A._getEmptyRowSkeleton()])
+                  ? [].concat(i()(o), [$._getEmptyRowSkeleton()])
                   : o
               );
             },
@@ -721,56 +724,56 @@
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0,
-                n = C.map(function(n, r) {
+                n = T.map(function(n, r) {
                   var o = j({}, n);
                   return r === t && (o.disable = e), o;
                 });
-              N(n);
+              A(n);
             },
             _onRemoveRow: function(e) {
-              var t = C.filter(function(t, n) {
+              var t = T.filter(function(t, n) {
                 return n !== e;
               });
-              t.length ? N(t) : N([A._getEmptyRowSkeleton()]);
+              t.length ? A(t) : A([$._getEmptyRowSkeleton()]);
             }
           },
-          T = p.a.createElement("span", { className: "start-brace" }, "{"),
-          $ = p.a.createElement("span", { className: "end-brace" }, "}");
-        return C.length
+          D = p.a.createElement("span", { className: "start-brace" }, "{"),
+          I = p.a.createElement("span", { className: "end-brace" }, "}");
+        return T.length
           ? p.a.createElement(
               "div",
-              { className: "json-as-form ".concat(v) },
-              p.a.createElement("div", null, T),
-              C.map(function(e, t) {
-                var r = C.length === t + 1;
+              { className: "json-as-form ".concat(h) },
+              p.a.createElement("div", null, D),
+              T.map(function(e, t) {
+                var r = T.length === t + 1;
                 return p.a.createElement(g, {
                   row: e,
                   key: t,
                   isLast: r,
                   fixedKeys: n,
                   onChange: function(e, n) {
-                    return A._onChangeRow(e, n, t, r);
+                    return $._onChangeRow(e, n, t, r);
                   },
                   onToggleRowStatus: function(e) {
-                    return A._onToggleRowStatus(e, t);
+                    return $._onToggleRowStatus(e, t);
                   },
                   onRemoveRow: function() {
-                    return A._onRemoveRow(t);
+                    return $._onRemoveRow(t);
                   },
-                  showCheckBox: !_.current,
-                  rowInterpolator: E
+                  showCheckBox: !P.current,
+                  rowInterpolator: _
                 });
               }),
-              p.a.createElement("div", null, $),
-              x &&
+              p.a.createElement("div", null, I),
+              S &&
                 p.a.createElement(
                   "div",
                   null,
-                  p.a.createElement("pre", null, JSON.stringify(C, 2, 2)),
+                  p.a.createElement("pre", null, JSON.stringify(T, 2, 2)),
                   p.a.createElement("pre", null, JSON.stringify(t, 2, 2))
                 )
             )
-          : p.a.createElement("div", { className: "json-as-form ".concat(v) });
+          : p.a.createElement("div", { className: "json-as-form ".concat(h) });
       };
     },
     function(e, t) {
