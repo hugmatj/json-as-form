@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx webpack-dev-server",
     "build": "webpack -p",
-    "release": "yarn run build && npx release-it minor --ci"
+    "release": "yarn run build && npx release-it minor"
   },
   "author": "Nishchit Dhanani",
   "license": "MIT",
