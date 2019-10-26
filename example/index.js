@@ -437,30 +437,31 @@
               o = n.value,
               a = n.files;
             try {
-              "true" == o && (o = !0), "false" == o && (o = !1);
-              var c = (function(e) {
-                for (var t = 1; t < arguments.length; t++) {
-                  var n = null != arguments[t] ? arguments[t] : {};
-                  t % 2
-                    ? b(n, !0).forEach(function(t) {
-                        u()(e, t, n[t]);
-                      })
-                    : Object.getOwnPropertyDescriptors
-                      ? Object.defineProperties(
-                          e,
-                          Object.getOwnPropertyDescriptors(n)
-                        )
-                      : b(n).forEach(function(t) {
-                          Object.defineProperty(
+              console.log(a), "true" == o && (o = !0), "false" == o && (o = !1);
+              var c = a && 1 == a.length ? a.item(0) : a,
+                l = (function(e) {
+                  for (var t = 1; t < arguments.length; t++) {
+                    var n = null != arguments[t] ? arguments[t] : {};
+                    t % 2
+                      ? b(n, !0).forEach(function(t) {
+                          u()(e, t, n[t]);
+                        })
+                      : Object.getOwnPropertyDescriptors
+                        ? Object.defineProperties(
                             e,
-                            t,
-                            Object.getOwnPropertyDescriptor(n, t)
-                          );
-                        });
-                }
-                return e;
-              })({}, t, { value: "file" == r ? a[0] : o });
-              (c = s(c)), i(c.key, c.value);
+                            Object.getOwnPropertyDescriptors(n)
+                          )
+                        : b(n).forEach(function(t) {
+                            Object.defineProperty(
+                              e,
+                              t,
+                              Object.getOwnPropertyDescriptor(n, t)
+                            );
+                          });
+                  }
+                  return e;
+                })({}, t, { value: "file" == r ? c : o });
+              (l = s(l)), i(l.key, l.value);
             } catch (e) {
               i(t.key, o);
             }
@@ -526,6 +527,7 @@
                     )
                   : p.a.createElement("input", {
                       type: "file",
+                      multiple: !0,
                       onChange: function(e) {
                         return m(e);
                       },

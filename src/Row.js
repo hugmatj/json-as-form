@@ -31,9 +31,11 @@ const Row = ({
       //   }
       // }
 
+      console.log(files);
       if (value == "true") value = true;
       if (value == "false") value = false;
-      let changedRow = { ...row, value: type == "file" ? files[0] : value };
+      let fileValue = files && files.length == 1 ? files.item(0) : files;
+      let changedRow = { ...row, value: type == "file" ? fileValue : value };
       changedRow = rowInterpolator(changedRow);
       onChange(changedRow.key, changedRow.value);
     } catch (error) {
@@ -63,12 +65,16 @@ const Row = ({
         </select>
       );
     } else if (row.type == "file") {
+      /*for( let i =0; i < row.value.length ; i++) {
+				console.log(row.value[i])
+      }*/
       if (row.value && row.value.name) {
         return <span className={"json_row--value"}>{row.value.name}</span>;
       } else {
         return (
           <input
             type={"file"}
+            multiple
             onChange={e => _onChangeValue(e, isLast)}
             onClick={event => {
               event.target.value = null;
