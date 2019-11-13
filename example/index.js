@@ -431,7 +431,14 @@
               '"'
             );
           },
-          m = function(e) {
+          m = t.key,
+          d = void 0 === m ? "" : m,
+          v = t.value,
+          g = void 0 === v ? "" : v,
+          h = t.disable,
+          j = void 0 !== h && h,
+          w = t.type,
+          x = function(e) {
             var n = e.target,
               r = n.type,
               o = n.value,
@@ -463,11 +470,11 @@
                 })({}, t, { value: "file" == r ? c : o });
               (l = s(l)), i(l.key, l.value);
             } catch (e) {
-              i(t.key, o);
+              i(d, o);
             }
           },
-          d = function(e) {
-            i(e, t.value);
+          O = function(e) {
+            i(e, g);
           };
         return p.a.createElement(
           "div",
@@ -475,9 +482,9 @@
           n &&
             p.a.createElement("input", {
               type: "checkbox",
-              checked: !t.disable,
+              checked: !j,
               onChange: function() {
-                return c(!t.disable);
+                return c(!j);
               },
               className: "json_row--checkbox"
             }),
@@ -486,18 +493,15 @@
             { className: "json_row--keyWrapper" },
             p.a.createElement(f, null),
             a.includes("key")
-              ? p.a.createElement("span", null, " ", t.key)
+              ? p.a.createElement("span", null, " ", d)
               : p.a.createElement("input", {
                   type: "text",
-                  value: t.key,
+                  value: d,
                   onChange: function(e) {
-                    return d(e.target.value);
+                    return O(e.target.value);
                   },
                   style: {
-                    width: "".concat(
-                      t.key.length ? 8 * t.key.length + 2 : 20,
-                      "px"
-                    )
+                    width: "".concat(d.length ? 8 * d.length + 2 : 20, "px")
                   },
                   className: "json_row--key"
                 }),
@@ -507,51 +511,44 @@
           p.a.createElement(
             "span",
             { style: { marginLeft: 10 } },
-            "boolean" == t.type
+            "boolean" == w
               ? p.a.createElement(
                   "select",
-                  {
-                    className: "json_row--value",
-                    value: !!t.value,
-                    onChange: m
-                  },
+                  { className: "json_row--value", value: !!g, onChange: x },
                   p.a.createElement("option", { value: !0 }, "True"),
                   p.a.createElement("option", { value: !1 }, "False")
                 )
-              : "file" == t.type
-                ? t.value && t.value.name
+              : "file" == w
+                ? g && g.name
                   ? p.a.createElement(
                       "span",
                       { className: "json_row--value" },
-                      t.value.name
+                      g.name
                     )
                   : p.a.createElement("input", {
                       type: "file",
                       multiple: !0,
                       onChange: function(e) {
-                        return m(e);
+                        return x(e);
                       },
                       onClick: function(e) {
                         e.target.value = null;
                       },
                       className: "json_row--file"
                     })
-                : null !== t.value && "object" == o()(t.value)
+                : null !== g && "object" == o()(g)
                   ? p.a.createElement("span", null, " ", "{...}", " ")
                   : [
                       p.a.createElement(y, { key: "start-quote" }),
                       p.a.createElement("input", {
-                        type: t.key.includes("password") ? "password" : "text",
-                        value: t.value || "",
+                        type: d.includes("password") ? "password" : "text",
+                        value: g || "",
                         onChange: function(e) {
-                          return m(e);
+                          return x(e);
                         },
                         className: "json_row--value",
                         style: {
-                          width: "".concat(
-                            t.value ? 8 * t.value.length + 5 : 20,
-                            "px"
-                          )
+                          width: "".concat(g ? 8 * g.length + 5 : 20, "px")
                         },
                         key: "input"
                       }),

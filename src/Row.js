@@ -14,20 +14,22 @@ const Row = ({
   let KeyQuote = _ => <span className={"json_row--keyQuote"}>"</span>;
   let ValueQuote = _ => <span className={"json_row--valueQuote"}>"</span>;
 
+  let { key = "", value = "", disable = false, type } = row;
+
   let _onChangeValue = ({ target: { type, value, files } }) => {
     try {
       // if (!meta || !meta.variableToType) {
-      //   return onChange(row.key, type == "file" ? files[0] : value);
+      //   return onChange(key, type == "file" ? files[0] : value);
       // }
 
-      // if (Object.keys(meta.variableToType).includes(row.key)) {
+      // if (Object.keys(meta.variableToType).includes(key)) {
       //   if (
-      //     meta.variableToType[row.key].ofType &&
-      //     meta.variableToType[row.key].ofType.serialize
+      //     meta.variableToType[key].ofType &&
+      //     meta.variableToType[key].ofType.serialize
       //   ) {
-      //     let value = meta.variableToType[row.key].ofType.serialize(value);
+      //     let value = meta.variableToType[key].ofType.serialize(value);
 
-      //     onChange(row.key, value);
+      //     onChange(key, value);
       //   }
       // }
 
@@ -39,37 +41,37 @@ const Row = ({
       changedRow = rowInterpolator(changedRow);
       onChange(changedRow.key, changedRow.value);
     } catch (error) {
-      onChange(row.key, value);
+      onChange(key, value);
     }
 
-    //onChange(row.key, +e.target.value)
+    //onChange(key, +e.target.value)
   };
 
   let _onChangeKey = name => {
-    onChange(name, row.value);
+    onChange(name, value);
     if (isLast) {
-      // row.key && row.key.length && addNewRow();
+      // key && key.length && addNewRow();
     }
   };
 
   let _renderValue = () => {
-    if (row.type == "boolean") {
+    if (type == "boolean") {
       return (
         <select
           className={"json_row--value"}
-          value={!!row.value}
+          value={!!value}
           onChange={_onChangeValue}
         >
           <option value={true}>True</option>
           <option value={false}>False</option>
         </select>
       );
-    } else if (row.type == "file") {
-      /*for( let i =0; i < row.value.length ; i++) {
-				console.log(row.value[i])
+    } else if (type == "file") {
+      /*for( let i =0; i < value.length ; i++) {
+				console.log(value[i])
       }*/
-      if (row.value && row.value.name) {
-        return <span className={"json_row--value"}>{row.value.name}</span>;
+      if (value && value.name) {
+        return <span className={"json_row--value"}>{value.name}</span>;
       } else {
         return (
           <input
@@ -83,18 +85,18 @@ const Row = ({
           />
         );
       }
-    } else if (row.value !== null && typeof row.value == "object") {
+    } else if (value !== null && typeof value == "object") {
       return <span> {`{...}`} </span>;
     } else {
       return [
         <ValueQuote key="start-quote" />,
         <input
-          type={row.key.includes("password") ? "password" : "text"}
-          value={row.value || ""}
+          type={key.includes("password") ? "password" : "text"}
+          value={value || ""}
           onChange={e => _onChangeValue(e, isLast)}
           className={"json_row--value"}
           style={{
-            width: `${row.value ? row.value.length * 8 + 5 : 20}px`
+            width: `${value ? value.length * 8 + 5 : 20}px`
           }}
           key="input"
         />,
@@ -108,24 +110,24 @@ const Row = ({
       {showCheckBox && (
         <input
           type="checkbox"
-          checked={!row.disable}
-          onChange={() => onToggleRowStatus(!row.disable)}
+          checked={!disable}
+          onChange={() => onToggleRowStatus(!disable)}
           className={"json_row--checkbox"}
         />
       )}
 
       <span className={"json_row--keyWrapper"}>
         <KeyQuote />
-        {/*{row.key}*/}
+        {/*{key}*/}
         {fixedKeys.includes("key") ? (
-          <span> {row.key}</span>
+          <span> {key}</span>
         ) : (
           <input
             type="text"
-            value={row.key}
+            value={key}
             onChange={e => _onChangeKey(e.target.value)}
             style={{
-              width: `${row.key.length ? row.key.length * 8 + 2 : 20}px`
+              width: `${key.length ? key.length * 8 + 2 : 20}px`
             }}
             className={"json_row--key"}
           />
